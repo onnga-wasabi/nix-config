@@ -1,0 +1,18 @@
+version: '3'
+
+tasks:
+  build:
+    desc: 'build'
+    vars:
+      LOCAL_HOST_NAME:
+        sh: scutil --get LocalHostName
+    cmds:
+      - nix build ".#darwinConfigurations.{{.LOCAL_HOST_NAME}}.system"
+    silent: false
+  apply:
+    desc: 'apply'
+    deps:
+      - build
+    cmds:
+      - ./result/sw/bin/darwin-rebuild switch --flake ".#Air"
+    silent: false

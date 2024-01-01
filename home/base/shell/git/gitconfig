@@ -1,0 +1,22 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+name = onnga-wasabi
+email = yuuto.onnga.23@gmail.com
+[diff]
+    tool = vimdiff
+[difftool "difftastic"]
+    cmd = difft "$LOCAL" "$REMOTE"
+[core]
+	editor = nvim
+	excludesFile = ~/.gitignore_global
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
+[mergetool]
+	keepBackup = false
+[merge]
+	tool = vimdiff
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/

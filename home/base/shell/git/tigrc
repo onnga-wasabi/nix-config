@@ -1,0 +1,56 @@
+# Colors
+color default          white  default
+color cursor           white  green bold
+color status           white  default bold
+color title-focus      white  blue bold
+
+# General
+bind generic g none
+bind generic gg move-first-line
+
+bind generic G none
+bind generic G move-last-line
+
+bind generic <C-f> move-page-down
+bind generic <C-b> move-page-up
+
+bind generic <C-w><C-w> view-next
+
+# Main
+bind main H ?git rebase -i %(commit)
+bind main P !?git pull origin %(branch)
+bind main q @sh -c ';'  # do nothing
+bind main c ?git checkout %(commit)
+
+# Log
+bind log H ?git rebase -i %(commit)
+
+# Refs
+bind refs c !@git checkout %(branch)
+bind refs b !@git branch "%(prompt Enter branch name: )"
+bind refs p !?gh pr create -B %(branch)
+bind refs v !@?gh pr view --web %(branch)
+bind refs P !?git push origin %(branch)
+bind refs r ?git rebase %(branch)
+bind refs U !git pull origin %(branch)
+
+# Branch
+bind branch d !@?git branch -D %(branch)
+
+# Status
+bind status D !@?rm %(file)
+bind status d !@?git checkout %(file)
+bind status S !@git stash save "%(prompt Enter stash name: )"
+bind status C !git cz
+
+# Diff
+bind diff    H ?git rebase -i %(commit)
+bind diff    Y ?git stash pop %(stash)
+
+# Stash
+bind stash   Y ?git stash pop %(stash)
+
+# Global
+set refresh-mode = auto
+set refresh-mode = periodic
+set refresh-interval = 1
