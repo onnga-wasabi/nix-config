@@ -7,7 +7,7 @@ tasks:
       LOCAL_HOST_NAME:
         sh: scutil --get LocalHostName
     cmds:
-      - nix build ".#darwinConfigurations.{{.LOCAL_HOST_NAME}}.system"
+      - nix --extra-experimental-features "nix-command flakes" build ".#darwinConfigurations.Air.system"
     silent: false
   apply:
     desc: 'apply'
