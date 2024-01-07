@@ -61,7 +61,7 @@ return {
 	end,
 	keys = {
 		{ "<leader>p", function() require("telescope.builtin").find_files({ hidden = true }) end },
-		{ "<leader>c", function() require("telescope.builtin").find_files({ hidden = true, cwd = vim.fn.expand("~/nixflake") }) end },
+		{ "<leader>c", function() require("telescope.builtin").find_files({ hidden = true, cwd = vim.fn.expand("~/nix-config") }) end },
 		{ "<leader>b", function() require("telescope.builtin").buffers() end },
 		{ "<leader>h", function() require("telescope.builtin").help_tags() end },
 		{ "<leader>g", function() require("telescope.builtin").live_grep() end },
