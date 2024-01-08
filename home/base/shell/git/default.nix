@@ -5,6 +5,7 @@
   home.packages = with pkgs; [
     gitui
     tig
+    commitizen
   ];
 
   xdg.configFile."tig/config".source = ./tigrc;

@@ -6,10 +6,6 @@
     tmux
   ];
 
-  home.file.".tmux.conf".source = ./tmux.conf;
-  home.file.".tmux-powerlinerc".source = ./tmux-powerlinerc;
-  xdg.configFile."tmux-powerline" = {
-    source = ./tmux-powerline;
-    recursive = true;
-  };
+  xdg.configFile."tmux/tmux.conf".source = ./tmux.conf;
+  xdg.configFile."tmux-powerline/config.sh".source = ./tmux-powerlinerc;
 }
