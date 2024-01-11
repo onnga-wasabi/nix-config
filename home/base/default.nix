@@ -5,6 +5,7 @@
   ];
   home.packages = with pkgs; [
     coreutils
+    neofetch
     asdf-vm
   ];
   xdg = {

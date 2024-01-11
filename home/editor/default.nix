@@ -2,6 +2,7 @@
 , ...
 }: {
   imports = [
+    ./cspell
     ./latex
     ./nvim
   ];

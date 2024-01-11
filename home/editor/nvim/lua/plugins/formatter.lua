@@ -82,15 +82,15 @@ return {
 						exe = "buf",
 						args = {
 							"format",
-                            "-w",
+							"-w",
 							util.escape_path(util.get_current_buffer_file_path()),
 						},
 						stdin = false,
 					},
 				},
-                javascript = {
+				javascript = {
 					require("formatter.filetypes.javascript").prettier,
-                },
+				},
 				typescript = {
 					require("formatter.filetypes.typescript").prettier,
 				},

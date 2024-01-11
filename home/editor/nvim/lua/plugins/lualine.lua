@@ -4,7 +4,7 @@ return {
 	opts = {
 		options = {
 			icons_enabled = true,
-			theme = "onedark",
+			theme = "iceberg_dark",
 			ignore_focus = {},
 			always_divide_middle = true,
 			globalstatus = true,

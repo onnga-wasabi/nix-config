@@ -1,3 +1,10 @@
 { pkgs
 , ...
-}: { }
+}: {
+  home.packages = with pkgs; [
+    k9s
+    kube-score
+    kubectl
+    kubectx
+  ];
+}
