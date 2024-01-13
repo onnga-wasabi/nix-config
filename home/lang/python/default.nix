@@ -6,7 +6,6 @@
 let
   my-python-pkgs = ps:
     with ps; [
-      black
       (
         buildPythonPackage rec {
           pname = "deserialize";
@@ -26,6 +25,7 @@ let
 in
 {
   home.packages = with pkgs; [
+    poetry
     (python311.withPackages my-python-pkgs)
   ];
 }

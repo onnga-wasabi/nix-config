@@ -12,6 +12,8 @@
     vivid
     xdg-ninja
     go-migrate
+    fd
+    fselect
   ];
 
   programs.zsh = {
