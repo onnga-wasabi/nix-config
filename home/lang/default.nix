@@ -2,6 +2,10 @@
 , pkgs
 , ...
 }: {
+  imports = [
+    ./python
+    ./rust
+  ];
   home.packages = with pkgs; [
     # golang
     go
@@ -31,13 +35,7 @@
     lua
     stylua
 
-    # python
-    python311Full
-
-    # rust
-    cargo
-    rustfmt
-
+    # shell
     shellcheck
     shfmt
   ];

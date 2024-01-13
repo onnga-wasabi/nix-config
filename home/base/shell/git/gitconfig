@@ -3,10 +3,16 @@
 # Please adapt and uncomment the following lines:
 name = onnga-wasabi
 email = yuuto.onnga.23@gmail.com
+
 [diff]
-    tool = vimdiff
+    tool = difftastic
+    external = difft
+[difftool]
+    prompt = false
 [difftool "difftastic"]
     cmd = difft "$LOCAL" "$REMOTE"
+[pager]
+    difftool = true
 [core]
 	editor = nvim
 	excludesFile = ~/.gitignore_global
@@ -17,7 +23,7 @@ email = yuuto.onnga.23@gmail.com
 [mergetool]
 	keepBackup = false
 [merge]
-	tool = vimdiff
+    tool = difftastic
 [url "ssh://git@github.com/"]
     insteadOf = https://github.com/
 

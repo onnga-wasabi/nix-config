@@ -11,6 +11,7 @@
     ripgrep
     vivid
     xdg-ninja
+    go-migrate
   ];
 
   programs.zsh = {

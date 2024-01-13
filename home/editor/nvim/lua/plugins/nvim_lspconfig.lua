@@ -29,6 +29,8 @@ return {
 		end
 		local lsp_util = require("lspconfig/util")
 
+        lspconfig.rnix.setup({})
+
 		lspconfig.bufls.setup({})
 
 		lspconfig.metals.setup({})
