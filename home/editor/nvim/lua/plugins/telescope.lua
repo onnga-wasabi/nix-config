@@ -60,26 +60,91 @@ return {
 		telescope.setup(opts)
 	end,
 	keys = {
-		{ "<leader>p", function() require("telescope.builtin").find_files({ hidden = true }) end },
-		{ "<leader>c", function() require("telescope.builtin").find_files({ hidden = true, cwd = vim.fn.expand("~/nix-config") }) end },
-		{ "<leader>b", function() require("telescope.builtin").buffers() end },
-		{ "<leader>h", function() require("telescope.builtin").help_tags() end },
-		{ "<leader>g", function() require("telescope.builtin").live_grep() end },
-		{ "<leader>f", function() require("telescope").extensions.file_browser.file_browser({ files = false, hidden = true }) end },
+		{
+			"<leader>p",
+			function()
+				require("telescope.builtin").find_files({ hidden = true })
+			end,
+		},
+		{
+			"<leader>c",
+			function()
+				require("telescope.builtin").find_files({ hidden = true, cwd = vim.fn.expand("~/nix-config") })
+			end,
+		},
+		{
+			"<leader>b",
+			function()
+				require("telescope.builtin").buffers()
+			end,
+		},
+		{
+			"<leader>h",
+			function()
+				require("telescope.builtin").help_tags()
+			end,
+		},
+		{
+			"<leader>g",
+			function()
+				require("telescope.builtin").live_grep()
+			end,
+		},
+		{
+			"<leader>f",
+			function()
+				require("telescope").extensions.file_browser.file_browser({ files = false, hidden = true })
+			end,
+		},
 
 		-- Lsp
-		{ "<leader>s", function() require("telescope.builtin").lsp_document_symbols() end },
-		{ "gd", function() require("telescope.builtin").lsp_definitions() end },
-		{ "gi", function() require("telescope.builtin").lsp_implementations() end },
-		{ "gr", function() require("telescope.builtin").lsp_references() end },
+		{
+			"<leader>s",
+			function()
+				require("telescope.builtin").lsp_document_symbols()
+			end,
+		},
+		{
+			"gd",
+			function()
+				require("telescope.builtin").lsp_definitions()
+			end,
+		},
+		{
+			"gi",
+			function()
+				require("telescope.builtin").lsp_implementations()
+			end,
+		},
+		{
+			"gr",
+			function()
+				require("telescope.builtin").lsp_references()
+			end,
+		},
 
 		-- Trouble
-		{ "gxw", function() require("telescope.builtin").diagnostics() end },
+		{
+			"gxw",
+			function()
+				require("telescope.builtin").diagnostics()
+			end,
+		},
 
 		-- Outlie
-		{ "<leader>o", function() require("telescope").extensions.aerial.aerial() end },
+		{
+			"<leader>o",
+			function()
+				require("telescope").extensions.aerial.aerial()
+			end,
+		},
 
 		-- NeoClip
-		{ "<leader>y", function() require("telescope").extensions.neoclip.neoclip() end },
+		{
+			"<leader>y",
+			function()
+				require("telescope").extensions.neoclip.neoclip()
+			end,
+		},
 	},
 }

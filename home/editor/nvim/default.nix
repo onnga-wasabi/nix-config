@@ -12,4 +12,8 @@
     source = ./lua;
     recursive = true;
   };
+  xdg.dataFile."zettelkasten/templates" = {
+    source = ./telekasten-templates;
+    recursive = true;
+  };
 }
