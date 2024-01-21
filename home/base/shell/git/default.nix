@@ -6,6 +6,7 @@
     gitui
     tig
     commitizen
+    lazygit
   ];
 
   xdg.configFile."tig/config".source = ./tigrc;

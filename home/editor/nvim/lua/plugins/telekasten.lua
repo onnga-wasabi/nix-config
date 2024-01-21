@@ -74,7 +74,7 @@ return {
 			tag_notation = "#tag",
 
 			-- command palette theme: dropdown (window) or ivy (bottom panel)
-			command_palette_theme = "ivy",
+			command_palette_theme = "dropdown",
 
 			-- tag list theme:
 			-- get_cursor: small tag list at cursor; ivy and dropdown like above
@@ -126,60 +126,53 @@ return {
 				require("telekasten").panel()
 			end,
 		},
-		{
-			"<leader>zf",
-			function()
-				require("telekasten").find_notes()
-			end,
-		},
-		{
-			"<leader>zg",
-			function()
-				require("telekasten").search_notes()
-			end,
-		},
-		{
-			"<leader>zd",
-			function()
-				require("telekasten").goto_today()
-			end,
-		},
-		{
-			"<leader>zz",
-			function()
-				require("telekasten").follow_link()
-			end,
-		},
-		{
-			"<leader>zn",
-			function()
-				require("telekasten").new_note()
-			end,
-		},
-		{
-			"<leader>zc",
-			function()
-				require("telekasten").show_calendar()
-			end,
-		},
-		{
-			"<leader>zb",
-			function()
-				require("telekasten").show_backlinks()
-			end,
-		},
-		{
-			"<leader>zI",
-			function()
-				require("telekasten").insert_img_link()
-			end,
-		},
-		{
-			mode = "i",
-			"[[",
-			function()
-				require("telekasten").insert_link()
-			end,
-		},
+		-- {
+		-- 	"<leader>zf",
+		-- 	function()
+		-- 		require("telekasten").find_notes()
+		-- 	end,
+		-- },
+		-- {
+		-- 	"<leader>zg",
+		-- 	function()
+		-- 		require("telekasten").search_notes()
+		-- 	end,
+		-- },
+		-- {
+		-- 	"<leader>zd",
+		-- 	function()
+		-- 		require("telekasten").goto_today()
+		-- 	end,
+		-- },
+		-- {
+		-- 	"<leader>zz",
+		-- 	function()
+		-- 		require("telekasten").follow_link()
+		-- 	end,
+		-- },
+		-- {
+		-- 	"<leader>zn",
+		-- 	function()
+		-- 		require("telekasten").new_note()
+		-- 	end,
+		-- },
+		-- {
+		-- 	"<leader>zc",
+		-- 	function()
+		-- 		require("telekasten").show_calendar()
+		-- 	end,
+		-- },
+		-- {
+		-- 	"<leader>zb",
+		-- 	function()
+		-- 		require("telekasten").show_backlinks()
+		-- 	end,
+		-- },
+		-- {
+		-- 	"<leader>zI",
+		-- 	function()
+		-- 		require("telekasten").insert_img_link()
+		-- 	end,
+		-- },
 	},
 }

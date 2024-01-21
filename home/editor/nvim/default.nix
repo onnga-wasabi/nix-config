@@ -5,6 +5,7 @@
   home.packages = with pkgs; [
     neovim
     sqlfluff
+    nodePackages_latest.fixjson
   ];
 
   xdg.configFile."nvim/init.lua".source = ./init.lua;

@@ -4,9 +4,12 @@
     ./shell
   ];
   home.packages = with pkgs; [
-    coreutils
-    neofetch
     asdf-vm
+    coreutils
+    gnused
+    neofetch
+    neovim
+    nixpkgs-fmt
   ];
   xdg = {
     enable = true;

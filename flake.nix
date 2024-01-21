@@ -59,6 +59,10 @@
 
         # The platform the configuration will be used on.
         nixpkgs.hostPlatform = "aarch64-darwin";
+        nixpkgs.config = {
+          allowUnfree = true;
+          binary-caches-parallel-connections = 8;
+        };
 
         users.users.wasabi = {
           name = "wasabi";

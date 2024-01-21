@@ -16,7 +16,7 @@ source "${ZSH_CONFIG_HOME}/p10k.rc.zsh"
 source "${ZSH_CONFIG_HOME}/tpm.rc.zsh"
 
 # Functions
-source "${XDG_CONFIG_HOME}/zsh/functions/init.zsh"
+source "${ZSH_CONFIG_HOME}/funtions/init.zsh"
 
 # Language Specific
 source "${ZSH_CONFIG_HOME}/language-specific/init.zsh"

@@ -6,16 +6,15 @@
     bat
     difftastic
     eza
-    fd
-    fselect
     fzf
-    go-migrate
     go-task
-    jq
-    navi
     ripgrep
     vivid
     xdg-ninja
+    go-migrate
+    fd
+    fselect
+    jq
   ];
 
   programs.zsh = {
@@ -27,15 +26,5 @@
   };
 
   xdg.configFile."zsh/.zshrc".source = ./zshrc;
-  xdg.configFile."zsh/rc" = {
-    source = ./rc;
-    recursive = true;
-  };
-  xdg.configFile."zsh/functions" = {
-    source = ./functions;
-    recursive = true;
-  };
-
-  # 本体は xdg 配下に置けない
-  home.file.".p10k.zsh".source = ./rc/p10k.zsh;
+  home.file.".p10k.zsh".source = ./p10k.zsh;
 }
