@@ -3,10 +3,11 @@
 , ...
 }: {
   home.packages = with pkgs; [
-    gitui
-    tig
     commitizen
+    gh
+    gitui
     lazygit
+    tig
   ];
 
   xdg.configFile."tig/config".source = ./tigrc;

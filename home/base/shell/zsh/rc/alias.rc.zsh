@@ -5,6 +5,7 @@ alias vimdiff="nvim -d"
 
 # ls
 alias ls="eza --icons=auto"
+alias l="ls"
 alias ll="ls -l --git"
 alias la="ls --git --all"
 alias lla="ll --all"
