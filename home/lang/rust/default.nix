@@ -7,16 +7,16 @@ let
     csvlens = (
       pkgs.rustPlatform.buildRustPackage rec {
         pname = "csvlens";
-        version = "v0.5.1";
+        version = "v0.6.0";
 
         src = pkgs.fetchFromGitHub {
           owner = "YS-L";
           repo = pname;
           rev = version;
-          hash = "sha256-9zIi49iXFOARSZsz0iqzC7NfoiBngfNt6A7vZuwxItI=";
+          hash = "sha256-KileDwgVnrbJ6sCv6d4PjnyYqrEmZK6JESYa7+rBneo=";
         };
 
-        cargoHash = "sha256-YR9/UZkSnzMrmihJcpVV5cbg/FAmfqypYhmn/vJ1z+s=";
+        cargoHash = "sha256-v3yXSnGoHn+7uZWOyqdvvRTtbg0N8six53J05YYbn4A=";
 
         meta = with lib; {
           description = "Command line csv viewer";

@@ -6,5 +6,6 @@
     kube-score
     kubectl
     kubectx
+    stern
   ];
 }

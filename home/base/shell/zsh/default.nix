@@ -5,6 +5,7 @@
   home.packages = with pkgs; [
     bat
     difftastic
+    nkf
     eza
     fd
     fselect

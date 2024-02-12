@@ -10,6 +10,7 @@
     neofetch
     neovim
     nixpkgs-fmt
+    unar
   ];
   xdg = {
     enable = true;
