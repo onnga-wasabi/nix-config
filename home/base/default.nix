@@ -11,6 +11,7 @@
     neovim
     nixpkgs-fmt
     unar
+    inetutils
   ];
   xdg = {
     enable = true;

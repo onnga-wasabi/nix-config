@@ -17,6 +17,8 @@
     ripgrep
     vivid
     xdg-ninja
+    csvq
+    yt-dlp
   ];
 
   programs.zsh = {

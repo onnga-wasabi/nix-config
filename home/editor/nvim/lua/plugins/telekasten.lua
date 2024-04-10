@@ -121,7 +121,7 @@ return {
 	end,
 	keys = {
 		{
-			"<leader>z",
+			"<leader>Z",
 			function()
 				require("telekasten").panel()
 			end,

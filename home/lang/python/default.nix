@@ -21,6 +21,10 @@ let
           ];
         }
       )
+      python-dotenv
+      requests
+      pynvim
+      prompt-toolkit
     ];
 in
 {

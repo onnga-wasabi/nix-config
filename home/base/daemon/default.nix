@@ -4,5 +4,6 @@
   home.packages = with pkgs; [
     postgresql
     sqlite
+    pgcli
   ];
 }
