@@ -4,8 +4,9 @@
 }: {
   home.packages = with pkgs; [
     bat
+    csvq
+    devbox
     difftastic
-    nkf
     eza
     fd
     fselect
@@ -14,10 +15,10 @@
     go-task
     jq
     navi
+    nkf
     ripgrep
     vivid
     xdg-ninja
-    csvq
     yt-dlp
   ];
 

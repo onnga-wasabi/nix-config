@@ -154,5 +154,8 @@ return {
 				toggle_viewed = { lhs = "<leader><space>", desc = "toggle viewer viewed state" },
 			},
 		},
+		suppress_missing_scope = {
+			projects_v2 = true,
+		},
 	},
 }

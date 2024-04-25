@@ -29,7 +29,7 @@ return {
 		end
 		local lsp_util = require("lspconfig/util")
 
-        lspconfig.rnix.setup({})
+		lspconfig.rnix.setup({})
 
 		lspconfig.bufls.setup({})
 
@@ -50,6 +50,10 @@ return {
 					},
 				},
 			},
+		})
+
+		lspconfig.golangci_lint_ls.setup({
+			filetypes = { "go", "gomod" },
 		})
 
 		lspconfig.terraformls.setup({
@@ -127,7 +131,7 @@ return {
 			},
 		})
 
-		lspconfig.ruby_ls.setup({
+		lspconfig.ruby_lsp.setup({
 			filetypes = {
 				"ruby",
 				"Brewfile",
@@ -147,59 +151,6 @@ return {
 				"typescript",
 				"markdown",
 			},
-		})
-
-		local ok, mason_tool_installer = pcall(require, "mason-tool-installer")
-		if not ok then
-			return
-		end
-
-		mason_tool_installer.setup({
-			-- a list of all tools you want to ensure are installed upon
-			-- start; they should be the names Mason uses for each tool
-			ensure_installed = {
-				"black",
-				"clangd",
-				"emmet_ls",
-				"dockerfile-language-server",
-				"flake8",
-				"gopls",
-				"groovy-language-server",
-				"isort",
-				"jdtls", -- java
-				"kotlin-language-server",
-				"ltex-ls",
-				"lua-language-server",
-				"marksman",
-				"opencl-language-server",
-				"prettier",
-				"pyright",
-				"robotframework-lsp",
-				"taplo",
-				"terraform-ls",
-				"texlab",
-				"typescript-language-server",
-				"vim-language-server",
-				"vue-language-server",
-				"yaml-language-server",
-				"yamlfmt",
-				"yamllint",
-			},
-			-- if set to true this will check each tool for updates. If updates
-			-- are available the tool will be updated. This setting does not
-			-- affect :MasonToolsUpdate or :MasonToolsInstall.
-			-- Default: false
-			auto_update = false,
-			-- automatically install / update on startup. If set to false nothing
-			-- will happen on startup. You can use :MasonToolsInstall or
-			-- :MasonToolsUpdate to install tools and check for updates.
-			-- Default: true
-			run_on_start = true,
-			-- set a delay (in ms) before the installation starts. this is only
-			-- effective if run_on_start is set to true.
-			-- e.g.: 5000 = 5 second delay, 10000 = 10 second delay, etc...
-			-- default: 0
-			start_delay = 1000, -- 3 second delay
 		})
 	end,
 }

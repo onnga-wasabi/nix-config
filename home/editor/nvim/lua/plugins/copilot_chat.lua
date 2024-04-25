@@ -1,11 +1,14 @@
 return {
 	-- https://github.com/CopilotC-Nvim/CopilotChat.nvim
 	"CopilotC-Nvim/CopilotChat.nvim",
-    branch = "canary",
-    requires = {
-        { "github/copilot.vim" },
-        { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
-    },
+	branch = "canary",
+	requires = {
+		{ "github/copilot.vim" },
+		{ "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+	},
+	opts = {
+		debug = true,
+	},
 }
 -- return {
 -- 	-- https://github.com/CopilotC-Nvim/CopilotChat.nvim

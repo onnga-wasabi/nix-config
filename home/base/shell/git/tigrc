@@ -21,6 +21,7 @@ bind main H ?git rebase -i %(commit)
 bind main P !?git pull origin %(branch)
 bind main q @sh -c ';'  # do nothing
 bind main c ?git checkout %(commit)
+bind main D !git diff %(commit)
 
 # Log
 bind log H ?git rebase -i %(commit)
@@ -38,14 +39,16 @@ bind refs U !git pull origin %(branch)
 bind branch d !@?git branch -D %(branch)
 
 # Status
-bind status D !@?rm %(file)
-bind status d !@?git checkout %(file)
+bind status R !@?rm %(file)
+bind status c !@?git checkout %(file)
 bind status S !@git stash save "%(prompt Enter stash name: )"
 bind status C !git cz commit
+bind status D !git diff -- %(file)
 
 # Diff
-bind diff    H ?git rebase -i %(commit)
-bind diff    Y ?git stash pop %(stash)
+bind diff H ?git rebase -i %(commit)
+bind diff Y ?git stash pop %(stash)
+bind diff D !git diff -- %(file)
 
 # Stash
 bind stash   Y ?git stash pop %(stash)
