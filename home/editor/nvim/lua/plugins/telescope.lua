@@ -100,7 +100,7 @@ return {
 			end,
 		},
 		{
-			"<leader>c",
+			"<leader>d",
 			function()
 				require("telescope.builtin").find_files({ hidden = true, cwd = vim.fn.expand("~/nix-config") })
 			end,
@@ -178,6 +178,24 @@ return {
 			function()
 				require("telescope").extensions.neoclip.neoclip()
 			end,
+		},
+		-- Copilot Chat
+		{
+			"<leader>c",
+			function()
+				local actions = require("CopilotChat.actions")
+				require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
+			end,
+			desc = "CopilotChat - Prompt actions",
+		},
+		{
+			"<leader>c",
+			function()
+				local actions = require("CopilotChat.actions")
+				require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
+			end,
+			desc = "CopilotChat - Prompt actions",
+            mode = "v",
 		},
 	},
 }

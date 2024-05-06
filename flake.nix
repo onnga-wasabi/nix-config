@@ -61,7 +61,8 @@
         nixpkgs.hostPlatform = "aarch64-darwin";
         nixpkgs.config = {
           allowUnfree = true;
-          binary-caches-parallel-connections = 8;
+          max-jobs = 4;
+          binary-caches-parallel-connections = 4;
         };
 
         users.users.wasabi = {
