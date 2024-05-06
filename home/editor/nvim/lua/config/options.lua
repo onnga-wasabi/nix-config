@@ -26,4 +26,4 @@ vim.o.foldlevel = 20
 vim.o.foldmethod = "manual"
 vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 vim.o.redrawtime = 5000
-
+vim.o.ambiwidth = "double"

@@ -1,9 +1,109 @@
 {
-  "commitizen": {
-    "name": "cz_conventional_commits",
-    "tag_format": "$version",
-    "version_scheme": "semver",
-    "version": "0.0.1",
-    "update_changelog_on_bump": true
-  }
+    "commitizen": {
+        "name": "cz_customize",
+        "tag_format": "$version",
+        "version_scheme": "semver",
+        "customize": {
+            "message_template": "{{change_type}}: {{message}}",
+            "example": "✨  feature: this feature enable customize through config file",
+            "schema": "<type>: <body>",
+            "schema_pattern": "(feature|bug fix):(\\s.*)",
+            "change_type_order": [
+                "BREAKING CHANGE",
+                ":sparkles: feat",
+                ":zap: update",
+                ":bug: fix",
+                ":ambulance: hotfix",
+                ":white_check_mark: test",
+                ":hammer: refactor",
+                ":racehorse: perf",
+                ":poop: disable",
+                ":fire: remove",
+                ":truck: move",
+                ":construction_worker: build",
+                ":rewind: revert",
+                ":art: style",
+                ":memo: docs",
+                ":green_heart: ci",
+                ":release: rocket",
+                "chore"
+            ],
+            "info": "This is customized info",
+            "commit_parser": "^(?P<change_type>feature|bug fix):\\s(?P<message>.*)?",
+            "questions": [
+                {
+                    "type": "list",
+                    "name": "change_type",
+                    "choices": [
+                        {
+                            "value": ":sparkles: feat",
+                            "name": "feat: A new feature."
+                        },
+                        {
+                            "value": ":zap: update",
+                            "name": "update: Update a feature or a specification changes."
+                        },
+                        {
+                            "value": ":bug: fix:",
+                            "name": "fix: A bug fix."
+                        },
+                        {
+                            "value": ":hammer: refactor",
+                            "name": "refactor: Refactoring."
+                        },
+                        {
+                            "value": ":zap: perf",
+                            "name": "perf: Improving performance."
+                        },
+                        {
+                            "value": ":poop: disable",
+                            "name": "disable: A feature is disabled (e.g. code comments)."
+                        },
+                        {
+                            "value": ":fire: remove",
+                            "name": "remove: Remove codes."
+                        },
+                        {
+                            "value": ":truck: move",
+                            "name": "move: Move or rename files."
+                        },
+                        {
+                            "value": ":construction_worker: build",
+                            "name": "build: Update build system."
+                        },
+                        {
+                            "value": ":rewind: revert",
+                            "name": "revert: Revert to a commit."
+                        },
+                        {
+                            "value": ":art: style",
+                            "name": "style: Style changes."
+                        },
+                        {
+                            "value": ":memo: docs",
+                            "name": "docs: Documentation changes."
+                        },
+                        {
+                            "value": ":green_heart: ci",
+                            "name": "ci: Continuous Integration changes."
+                        },
+                        {
+                            "value": ":rocket: release",
+                            "name": "release: Release a new version."
+                        },
+                        {
+                            "value": "chore",
+                            "name": "chore: Other changes."
+                        }
+                    ],
+                    "message": "Select the type of change you are committing"
+                },
+                {
+                    "type": "input",
+                    "name": "message",
+                    "message": "Body will be added to message in commit."
+                }
+            ]
+        }
+    }
 }

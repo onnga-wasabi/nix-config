@@ -74,6 +74,9 @@ return {
 				sh = {
 					require("formatter.filetypes.sh").shfmt,
 				},
+				zsh = {
+					require("formatter.filetypes.sh").shfmt,
+				},
 				json = {
 					require("formatter.filetypes.json").fixjson,
 				},

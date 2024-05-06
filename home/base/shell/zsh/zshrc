@@ -1,4 +1,5 @@
 ZSH_CONFIG_HOME="${XDG_CONFIG_HOME}/zsh/rc"
+ZSH_FUNCTIONS_HOME="${XDG_CONFIG_HOME}/zsh/functions"
 
 # Basic
 source "${ZSH_CONFIG_HOME}/base.rc.zsh"
@@ -16,7 +17,7 @@ source "${ZSH_CONFIG_HOME}/p10k.rc.zsh"
 source "${ZSH_CONFIG_HOME}/tpm.rc.zsh"
 
 # Functions
-source "${XDG_CONFIG_HOME}/zsh/functions/init.zsh"
+source "${ZSH_FUNCTIONS_HOME}/init.zsh"
 
 # Language Specific
 source "${ZSH_CONFIG_HOME}/language-specific/init.zsh"

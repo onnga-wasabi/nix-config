@@ -10,6 +10,39 @@ return {
 	},
 	opts = {
 		defaults = {
+			layout_strategy = "vertical",
+			layout_config = {
+				bottom_pane = {
+					height = 25,
+					preview_cutoff = 120,
+					prompt_position = "top",
+				},
+				center = {
+					height = 0.99,
+					preview_cutoff = 40,
+					prompt_position = "top",
+					width = 0.9,
+				},
+				cursor = {
+					height = 0.9,
+					preview_cutoff = 40,
+					width = 0.8,
+				},
+				horizontal = {
+					height = 0.9,
+					preview_cutoff = 120,
+					prompt_position = "bottom",
+					width = 0.8,
+				},
+				vertical = {
+					height = 0.95, -- function(_, _, max_lines) return max_lines end,
+					preview_height = 0.7,
+					preview_cutoff = 0,
+					prompt_position = "bottom",
+					mirror = true,
+					width = 0.9,
+				},
+			},
 			initial_mode = "insert",
 			file_ignore_patterns = {
 				"node_modules/",

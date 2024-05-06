@@ -17,3 +17,7 @@ zinit light zsh-users/zsh-syntax-highlighting
 # ls
 # zinit light zpm-zsh/ls # エイリアスとか
 
+
+# zsh-yarn-completions
+zinit ice atload"zpcdreplay" atclone'./zplug.zsh'
+zinit light g-plane/zsh-yarn-autocompletions
