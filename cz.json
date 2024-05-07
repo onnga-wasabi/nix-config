@@ -44,7 +44,7 @@
                             "name": "update: Update a feature or a specification changes."
                         },
                         {
-                            "value": ":bug: fix:",
+                            "value": ":bug: fix",
                             "name": "fix: A bug fix."
                         },
                         {
