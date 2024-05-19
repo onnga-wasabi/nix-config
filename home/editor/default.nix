@@ -5,5 +5,6 @@
     ./cspell
     ./latex
     ./nvim
+    ./vscode
   ];
 }

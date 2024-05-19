@@ -2,6 +2,7 @@ return {
 	-- https://github.com/lukas-reineke/indent-blankline.nvim
 	"lukas-reineke/indent-blankline.nvim",
 	main = "ibl",
+	commit = "29be0919b91fb59eca9e90690d76014233392bef", -- https://github.com/lukas-reineke/indent-blankline.nvim/discussions/692
 	config = function()
 		-- https://github.com/lukas-reineke/indent-blankline.nvim?tab=readme-ov-file#rainbow-delimitersnvim-integration
 		local highlight = {

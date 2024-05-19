@@ -86,6 +86,6 @@ return {
 		},
 	},
 	keys = {
-		{ "<leader><leader>", function() require("dapui").toggle() end },
+		-- { "<leader><leader>", function() require("dapui").toggle() end },
 	},
 }

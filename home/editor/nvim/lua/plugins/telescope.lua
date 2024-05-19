@@ -2,6 +2,7 @@ return {
 	-- https://github.com/nvim-telescope/telescope.nvim
 	"nvim-telescope/telescope.nvim",
 	dependencies = {
+		"nvim-telescope/telescope-frecency.nvim",
 		"nvim-telescope/telescope-file-browser.nvim",
 		"nvim-lua/plenary.nvim",
 		"stevearc/aerial.nvim",
@@ -86,6 +87,7 @@ return {
 	config = function(_, opts)
 		local telescope = require("telescope")
 
+		telescope.load_extension("frecency")
 		telescope.load_extension("file_browser")
 		telescope.load_extension("aerial")
 		telescope.load_extension("neoclip")
@@ -93,6 +95,12 @@ return {
 		telescope.setup(opts)
 	end,
 	keys = {
+		{
+			"<leader><leader>",
+			function()
+				require("telescope").extensions.frecency.frecency({ workspace = "CWD" })
+			end,
+		},
 		{
 			"<leader>p",
 			function()
@@ -195,7 +203,7 @@ return {
 				require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
 			end,
 			desc = "CopilotChat - Prompt actions",
-            mode = "v",
+			mode = "v",
 		},
 	},
 }

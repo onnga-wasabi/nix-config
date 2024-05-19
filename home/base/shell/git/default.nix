@@ -1,10 +1,11 @@
 { config
 , pkgs
 , ...
-}: {
+}:
+{
   home.packages = with pkgs; [
     commitizen
-    gh
+    # gh # upgrade の頻度がたかいので手動で管理
     gitui
     lazygit
     tig
