@@ -26,6 +26,7 @@ return {
 			"robotframework-lsp",
 			"shfmt",
 			"stylua",
+			"sqls",
 			"taplo",
 			"terraform-ls",
 			"texlab",

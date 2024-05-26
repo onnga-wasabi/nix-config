@@ -74,7 +74,7 @@ return {
 			},
 		})
 
-		lspconfig.sqlls.setup({})
+		lspconfig.sqls.setup({})
 
 		lspconfig.yamlls.setup({})
 
