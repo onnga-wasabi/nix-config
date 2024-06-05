@@ -14,6 +14,7 @@
     go-migrate
     go-task
     jq
+    jnv
     navi
     nkf
     ripgrep

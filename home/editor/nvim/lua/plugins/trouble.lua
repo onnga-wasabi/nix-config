@@ -53,7 +53,7 @@ return {
 	},
 	keys = {
 		{ "gxd", "<cmd>TroubleToggle document_diagnostics<cr>" },
-		{ "gxw", "<cmd>TroubleToggle workspace_diagnostics<cr>" },
+		-- { "gxw", "<cmd>TroubleToggle workspace_diagnostics<cr>" }, telescope でやる
 		{ "gxq", "<cmd>TroubleToggle quickfix<cr>" },
 		{ "gn", ":<c-u>lua require('trouble').next({skip_groups = true, jump = true})<cr>" },
 	},

@@ -23,7 +23,7 @@
 
     # javascript
     deno
-    nodejs_21
+    nodejs_22
     yarn
 
     # grpc
