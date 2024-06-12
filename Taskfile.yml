@@ -1,6 +1,11 @@
 version: '3'
 
 tasks:
+  stage:
+    desc: 'stage'
+    cmds:
+      - git add .
+    silent: false
   format:
     desc: 'format'
     cmds:
@@ -9,6 +14,7 @@ tasks:
   build:
     desc: 'build'
     deps:
+      - stage
       - format
     vars:
       LOCAL_HOST_NAME:
@@ -20,13 +26,20 @@ tasks:
     desc: 'apply'
     deps:
       - build
+    vars:
+      LOCAL_HOST_NAME:
+        sh: scutil --get LocalHostName
     cmds:
-      - bash -c 'git add . && ./result/sw/bin/darwin-rebuild switch --flake ".#{{.LOCAL_HOST_NAME}}"'
+      - ./result/sw/bin/darwin-rebuild switch --flake ".#{{.LOCAL_HOST_NAME}}"'
     silent: false
   apply-commit:
     desc: 'commited apply'
     deps:
       - build
+    vars:
+      LOCAL_HOST_NAME:
+        sh: scutil --get LocalHostName
     cmds:
-      - bash -c 'git add . && git commit && ./result/sw/bin/darwin-rebuild switch --flake ".#{{.LOCAL_HOST_NAME}}"'
+      - git commit
+      - ./result/sw/bin/darwin-rebuild switch --flake ".#{{.LOCAL_HOST_NAME}}"'
     silent: false
