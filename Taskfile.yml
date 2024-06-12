@@ -30,7 +30,7 @@ tasks:
       LOCAL_HOST_NAME:
         sh: scutil --get LocalHostName
     cmds:
-      - ./result/sw/bin/darwin-rebuild switch --flake ".#{{.LOCAL_HOST_NAME}}"'
+      - ./result/sw/bin/darwin-rebuild switch --flake ".#{{.LOCAL_HOST_NAME}}"
     silent: false
   apply-commit:
     desc: 'commited apply'
@@ -41,5 +41,5 @@ tasks:
         sh: scutil --get LocalHostName
     cmds:
       - git commit
-      - ./result/sw/bin/darwin-rebuild switch --flake ".#{{.LOCAL_HOST_NAME}}"'
+      - ./result/sw/bin/darwin-rebuild switch --flake ".#{{.LOCAL_HOST_NAME}}"
     silent: false
