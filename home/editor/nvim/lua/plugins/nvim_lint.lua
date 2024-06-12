@@ -18,7 +18,9 @@ return {
 			"BufReadPost",
 			"BufWritePre",
 		}, {
-			callback = function() require("lint").try_lint() end,
+			callback = function()
+				require("lint").try_lint()
+			end,
 		})
 	end,
 }

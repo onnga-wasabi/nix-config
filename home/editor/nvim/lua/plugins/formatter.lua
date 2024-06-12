@@ -17,59 +17,16 @@ return {
 			log_level = vim.log.levels.WARN,
 			-- All formatter configurations are opt-in
 			filetype = {
-				-- Formatter configurations for filetype "lua" go here
-				-- and will be executed in order
 				lua = {
-					-- "formatter.filetypes.lua" defines default configurations for the
-					-- "lua" filetype
+					-- Formatter configurations for filetype "lua" go here
+					-- and will be executed in order
 					require("formatter.filetypes.lua").stylua,
-
-					-- You can also define your own configuration
-					function()
-						-- Supports conditional formatting
-						-- if util.get_current_buffer_file_name() == "special.lua" then
-						-- 	return nil
-						-- end
-
-						-- Full specification of configurations is down below and in Vim help
-						-- files
-						return {
-							exe = "stylua",
-							args = {
-								"--search-parent-directories",
-								"--stdin-filepath",
-								util.escape_path(util.get_current_buffer_file_path()),
-								"--",
-								"-",
-							},
-							stdin = true,
-						}
-					end,
 				},
 				go = {
 					require("formatter.filetypes.go").gofmt,
-					{
-						exe = "gofmt",
-						args = {
-							util.escape_path(util.get_current_buffer_file_path()),
-						},
-						stdin = false,
-					},
 				},
 				sql = {
-					{
-						exe = "sqlfluff",
-						args = {
-							"fix",
-							"--dialect",
-							"postgres",
-							"-q",
-							"-f",
-							"-",
-							-- util.escape_path(util.get_current_buffer_file_path()),
-						},
-						stdin = true,
-					},
+					require("formatter.filetypes.sql").sqlfluff,
 				},
 				sh = {
 					require("formatter.filetypes.sh").shfmt,
@@ -84,15 +41,7 @@ return {
 					require("formatter.filetypes.python").black,
 				},
 				proto = {
-					{
-						exe = "buf",
-						args = {
-							"format",
-							"-w",
-							util.escape_path(util.get_current_buffer_file_path()),
-						},
-						stdin = false,
-					},
+					require("formatter.filetypes.proto").buf_format,
 				},
 				javascript = {
 					require("formatter.filetypes.javascript").prettier,
@@ -104,10 +53,7 @@ return {
 					require("formatter.filetypes.typescriptreact").prettier,
 				},
 				nix = {
-					{
-						exe = "nixpkgs-fmt",
-						stdin = true,
-					},
+					require("formatter.filetypes.nix").nixpkgs_fmt,
 				},
 				terraform = {
 					require("formatter.filetypes.terraform").terraformfmt,

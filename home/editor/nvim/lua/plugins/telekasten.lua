@@ -3,7 +3,7 @@ return {
 	"renerocksai/telekasten.nvim",
 	config = function()
 		-- refer to https://github.com/renerocksai/telekasten.nvim/wiki/Configuration
-        --
+		--
 		local home = os.getenv("XDG_DATA_HOME") .. "/" .. "zettelkasten"
 		-- NOTE for Windows users:
 		-- - don't use Windows

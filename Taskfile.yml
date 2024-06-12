@@ -1,6 +1,11 @@
 version: '3'
 
 tasks:
+  format:
+    desc: 'format'
+    cmds:
+      - nixpkgs-fmt .
+    silent: false
   build:
     desc: 'build'
     vars:
@@ -12,7 +17,21 @@ tasks:
   apply:
     desc: 'apply'
     deps:
+      - format
       - build
     cmds:
+      - git add .
       - ./result/sw/bin/darwin-rebuild switch --flake ".#{{.LOCAL_HOST_NAME}}"
+    silent: false
+  commit:
+    desc: 'commit'
+    cmds:
+      - git add . 
+      - git commit
+    silent: false
+  apply-commit:
+    desc: 'commit and apply'
+    deps:
+      - commit
+      - apply
     silent: false

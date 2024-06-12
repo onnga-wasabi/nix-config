@@ -12,6 +12,7 @@
     nixpkgs-fmt
     unar
     inetutils
+    nixpkgs-fmt
   ];
   xdg = {
     enable = true;
