@@ -21,18 +21,12 @@ tasks:
     deps:
       - build
     cmds:
-      - git add .
-      - ./result/sw/bin/darwin-rebuild switch --flake ".#{{.LOCAL_HOST_NAME}}"
-    silent: false
-  commit:
-    desc: 'commit'
-    cmds:
-      - git add . 
-      - git commit
+      - bash -c 'git add . && ./result/sw/bin/darwin-rebuild switch --flake ".#{{.LOCAL_HOST_NAME}}"'
     silent: false
   apply-commit:
-    desc: 'commit and apply'
+    desc: 'commited apply'
     deps:
-      - commit
-      - apply
+      - build
+    cmds:
+      - bash -c 'git add . && git commit && ./result/sw/bin/darwin-rebuild switch --flake ".#{{.LOCAL_HOST_NAME}}"'
     silent: false
