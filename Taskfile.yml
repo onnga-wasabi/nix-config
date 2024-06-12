@@ -8,6 +8,8 @@ tasks:
     silent: false
   build:
     desc: 'build'
+    deps:
+      - format
     vars:
       LOCAL_HOST_NAME:
         sh: scutil --get LocalHostName
@@ -17,7 +19,6 @@ tasks:
   apply:
     desc: 'apply'
     deps:
-      - format
       - build
     cmds:
       - git add .
