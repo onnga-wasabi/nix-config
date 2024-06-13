@@ -30,6 +30,7 @@ return {
 		local lsp_util = require("lspconfig/util")
 
 		lspconfig.rnix.setup({})
+		lspconfig.nil_ls.setup({})
 
 		lspconfig.bufls.setup({})
 

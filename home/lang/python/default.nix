@@ -1,11 +1,9 @@
-{ config
-, pkgs
-, lib
+{ pkgs
 , ...
 }:
 {
   home.packages = with pkgs; [
     poetry
-    python312
+    python311
   ];
 }
