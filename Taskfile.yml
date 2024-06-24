@@ -10,6 +10,7 @@ tasks:
     desc: 'format'
     cmds:
       - nixpkgs-fmt .
+      - stylua .
     silent: false
   build:
     desc: 'build'

@@ -14,3 +14,8 @@ bindkey "^[[Z" reverse-menu-complete # Shift-Tabで補完候補を逆順する("
 # glob
 setopt extended_glob # グロブ機能を拡張する
 unsetopt caseglob    # ファイルグロブで大文字小文字を区別しない
+
+# tool specific
+ZSH_COMPLETION_HOME="${XDG_CONFIG_HOME}/zsh/rc/completions"
+source "${ZSH_COMPLETION_HOME}/cloud_sql_proxy.zsh"
+source "${ZSH_COMPLETION_HOME}/alloydb_auth_proxy.zsh"

@@ -5,7 +5,7 @@ ZSH_FUNCTIONS_HOME="${XDG_CONFIG_HOME}/zsh/functions"
 source "${ZSH_CONFIG_HOME}/base.rc.zsh"
 source "${ZSH_CONFIG_HOME}/alias.rc.zsh"
 source "${ZSH_CONFIG_HOME}/color.rc.zsh"
-source "${ZSH_CONFIG_HOME}/completions.rc.zsh"
+source "${ZSH_CONFIG_HOME}/completions/init.rc.zsh"
 
 # Plugin Manger
 source "${ZSH_CONFIG_HOME}/zinit.rc.zsh"
@@ -20,5 +20,5 @@ source "${ZSH_CONFIG_HOME}/tpm.rc.zsh"
 source "${ZSH_FUNCTIONS_HOME}/init.zsh"
 
 # Language Specific
-source "${ZSH_CONFIG_HOME}/language-specific/init.zsh"
+source "${ZSH_CONFIG_HOME}/language-specific/init.rc.zsh"
 

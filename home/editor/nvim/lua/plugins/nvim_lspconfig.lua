@@ -75,8 +75,6 @@ return {
 			},
 		})
 
-		lspconfig.sqls.setup({})
-
 		lspconfig.yamlls.setup({})
 
 		lspconfig.opencl_ls.setup({})
@@ -151,22 +149,6 @@ return {
 				"javascript",
 				"typescript",
 				"markdown",
-			},
-		})
-
-		lspconfig.sqls.setup({
-			on_attach = function(client, bufnr)
-				require("sqls").on_attach(client, bufnr) -- require sqls.nvim
-			end,
-			settings = {
-				sqls = {
-					connections = {
-						{
-							driver = "postgresql",
-							dataSourceName = "host=127.0.0.1 port=5432 user=postgres password=secret dbname=postgres sslmode=disable",
-						},
-					},
-				},
 			},
 		})
 	end,

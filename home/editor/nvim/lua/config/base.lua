@@ -15,6 +15,7 @@ set_keymap("n", "#", "#``", opts)
 set_keymap("n", "<c-c>", "<cmd>noh<cr>:w<cr>", opts)
 set_keymap("n", "<c-p>", '<cmd>echo expand("%")<cr>', opts)
 set_keymap("n", "<leader>r", "<cmd>source ~/.config/nvim/init.lua<cr>", opts)
+set_keymap("n", '<leader>"', 'gg"+yG', opts)
 
 -- windows and buffers
 set_keymap("n", "<c-w>v", "<c-w>v<c-w>l", opts)

@@ -26,7 +26,19 @@ return {
 					require("formatter.filetypes.go").gofmt,
 				},
 				sql = {
-					require("formatter.filetypes.sql").sqlfluff,
+					{
+						exe = "sqlfluff",
+						args = {
+							"fix",
+							"--dialect",
+							"postgres",
+							"-q",
+							"-f",
+							"-",
+						},
+						stdin = true,
+						ignore_exitcode = true,
+					},
 				},
 				sh = {
 					require("formatter.filetypes.sh").shfmt,

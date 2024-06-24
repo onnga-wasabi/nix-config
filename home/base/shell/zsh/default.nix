@@ -11,10 +11,11 @@
     fd
     fselect
     fzf
+    gnused
     go-migrate
     go-task
-    jq
     jnv
+    jq
     navi
     nkf
     ripgrep
