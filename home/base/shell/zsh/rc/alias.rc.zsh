@@ -27,4 +27,4 @@ alias k=kubectl
 alias kc=kubectx
 alias kn=kubens
 alias go=richgo
-
+alias lg=lazygit

@@ -5,7 +5,7 @@ return {
 		"MunifTanjim/nui.nvim",
 	},
 	keys = {
-		{ "<leader><S-d>", "<cmd>Dbee toggle<cr>" },
+		{ "<A-d>", "<cmd>Dbee toggle<cr>" },
 	},
 	build = function()
 		-- Install tries to automatically detect the install method.
@@ -188,7 +188,7 @@ return {
 					{ key = "yaC", mode = "", action = "yank_all_csv" },
 
 					-- cancel current call execution
-					{ key = "<C-c>", mode = "", action = "cancel_call" },
+					{ key = "C", mode = "", action = "cancel_call" },
 				},
 			},
 
@@ -221,7 +221,7 @@ return {
 					-- show the result of the currently selected call record
 					{ key = "<CR>", mode = "", action = "show_result" },
 					-- cancel the currently selected call (if its still executing)
-					{ key = "<C-c>", mode = "", action = "cancel_call" },
+					{ key = "C", mode = "", action = "cancel_call" },
 				},
 
 				-- candies (icons and highlights)

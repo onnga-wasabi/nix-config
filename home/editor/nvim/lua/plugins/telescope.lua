@@ -8,6 +8,7 @@ return {
 		"stevearc/aerial.nvim",
 		"gbprod/yanky.nvim",
 		"AckslD/nvim-neoclip.lua",
+		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	},
 	opts = {
 		defaults = {
@@ -72,6 +73,7 @@ return {
 				"%.xlsx",
 				"%.ipynb",
 			},
+			winblend = 30,
 		},
 		extensions = {
 			aerial = {
@@ -81,6 +83,12 @@ return {
 					json = true, -- You can set the option for specific filetypes
 					yaml = true,
 				},
+			},
+			fzf = {
+				fuzzy = true, -- false will only do exact matching
+				override_generic_sorter = true, -- override the generic sorter
+				override_file_sorter = true, -- override the file sorter
+				case_mode = "smart_case", -- or "ignore_case" or "respect_case" the default case_mode is "smart_case"
 			},
 		},
 	},
@@ -93,6 +101,9 @@ return {
 		telescope.load_extension("neoclip")
 
 		telescope.setup(opts)
+		-- To get fzf loaded and working with telescope, you need to call
+		-- load_extension, somewhere after setup function:
+		telescope.load_extension("fzf")
 	end,
 	keys = {
 		{

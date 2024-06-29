@@ -7,6 +7,7 @@
     csvq
     devbox
     difftastic
+    entr
     eza
     fd
     fselect
@@ -14,6 +15,7 @@
     gnused
     go-migrate
     go-task
+    graphviz
     jnv
     jq
     navi

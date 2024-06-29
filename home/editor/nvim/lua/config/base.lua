@@ -69,29 +69,27 @@ endif
 ]])
 
 -- refer to: https://lsifrontend.blog.fc2.com/blog-entry-356.html?sp
-vim.cmd([[
-" ウィンドウを閉じずにバッファを閉じる
-command! Ebd call EBufdelete()
-function! EBufdelete()
-  let l:currentBufNum = bufnr("%")
-  let l:alternateBufNum = bufnr("#")
+function _G.EBufdelete()
+	local currentBufNum = vim.fn.bufnr("%")
+	local alternateBufNum = vim.fn.bufnr("#")
 
-  if buflisted(l:alternateBufNum)
-    buffer #
-  else
-    bnext
-  endif
+	if vim.fn.buflisted(alternateBufNum) == 1 then
+		vim.cmd("buffer #")
+	else
+		vim.cmd("bnext")
+	end
 
-  if buflisted(l:currentBufNum)
-    execute "silent bwipeout".l:currentBufNum
-    " bwipeoutに失敗した場合はウインドウ上のバッファを復元
-    if bufloaded(l:currentBufNum) != 0
-      execute "buffer " . l:currentBufNum
-    endif
-  endif
-endfunction
-]])
-set_keymap("n", ",", "<cmd>silent! w<cr><cmd>Ebd<cr>", opts)
+	if vim.fn.buflisted(currentBufNum) == 1 then
+		vim.cmd("silent bwipeout " .. currentBufNum)
+		-- bwipeoutに失敗した場合はウインドウ上のバッファを復元
+		if vim.fn.bufloaded(currentBufNum) ~= 0 then
+			vim.cmd("buffer " .. currentBufNum)
+		end
+	end
+end
+
+-- キーマップの設定
+set_keymap("n", ",", "<cmd>silent! w<cr><cmd>lua EBufdelete()<cr>", opts)
 
 -- Preview PlantUML
 set_keymap("n", "<c-w>l", "<cmd>silent! w<cr><c-w>l", opts)

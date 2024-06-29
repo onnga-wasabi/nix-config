@@ -4,26 +4,46 @@
 name = onnga-wasabi
 email = yuuto.onnga.23@gmail.com
 
-[diff]
-    tool = difftastic
-    external = difft
-[difftool]
-    prompt = false
-[difftool "difftastic"]
-    cmd = difft "$LOCAL" "$REMOTE"
-[pager]
-    difftool = true
+[include]
+    path = ~/.config/delta/themes.gitconfig
+
 [core]
 	editor = nvim
-	excludesFile = ~/.gitignore_global
+	excludesFile = ~/.config/git/ignore
+    pager = delta
+
+[diff]
+    colorMoved = default
+
+[difftool]
+    prompt = false
+
+[pager]
+    diff = delta
+    log = delta
+    reflog = delta
+    show = delta
+
+[delta]
+    line-numbers = true
+    navigate = true
+    side-by-side = false
+
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+
 [init]
 	defaultBranch = main
+
 [pull]
 	rebase = true
+
+[merge]
+    conflictstyle = diff3
+
 [mergetool]
 	keepBackup = false
-[merge]
-    tool = difftastic
+
 [url "ssh://git@github.com/"]
     insteadOf = https://github.com/
 

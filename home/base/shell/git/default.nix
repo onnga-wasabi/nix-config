@@ -34,14 +34,27 @@ in
   home.packages = with pkgs; [
     git
     gh
-    gitui
+    delta
     lazygit
+    libgit2
     customPkgs.tig
     customPkgs.commitizen
   ];
 
-  xdg.configFile."tig/config".source = ./tigrc;
-  xdg.configFile."git/config".source = ./gitconfig;
-  xdg.configFile."git/ignore".source = ./ignore;
-  xdg.configFile."gitui/key_bindings.ron".source = ./key_bindings.ron;
+  xdg.configFile."git" = {
+    source = ./rc/git;
+    recursive = true;
+  };
+  xdg.configFile."tig" = {
+    source = ./rc/tig;
+    recursive = true;
+  };
+  xdg.configFile."delta" = {
+    source = ./rc/delta;
+    recursive = true;
+  };
+  xdg.configFile."lazygit" = {
+    source = ./rc/lazygit;
+    recursive = true;
+  };
 }
