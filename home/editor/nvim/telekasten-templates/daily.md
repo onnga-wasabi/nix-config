@@ -1,6 +1,0 @@
----
-title: {{hdate}}
----
-
-# Short Title
-

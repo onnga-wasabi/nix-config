@@ -12,7 +12,15 @@ zgd() {
   else
       workdir=${HOME}/"workspace"
   fi
-  dir=$(rg --files --hidden --follow --glob "**/.git/*" $workdir | rev | cut -d '/' -f 3- | rev | sort | uniq | fzf +m) &&
+  dir=$(rg --files --hidden --follow --glob "**/.git/*" ${workdir} | rev | cut -d '/' -f 3- | rev | sort | uniq | fzf +m) &&
+  cd "$dir"
+}
+
+zob() {
+  local dir
+  local workdir
+  workdir=${XDG_STATE_HOME}/"obsidian"
+  dir=$(rg --files --hidden --follow --glob "**/.git/*" ${workdir} | rev | cut -d '/' -f 3- | rev | sort | uniq | fzf +m) &&
   cd "$dir"
 }
 

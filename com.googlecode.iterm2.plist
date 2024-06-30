@@ -983,7 +983,7 @@
 			<key>Blinking Cursor</key>
 			<true/>
 			<key>Blur</key>
-			<false/>
+			<true/>
 			<key>Blur Radius</key>
 			<real>0.10000000000000001</real>
 			<key>Bold Color</key>
