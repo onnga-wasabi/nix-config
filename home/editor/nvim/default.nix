@@ -6,7 +6,10 @@
     sqlfluff
     nodePackages_latest.fixjson
     luajitPackages.luarocks
+
+    # for obsidian
     pngpaste
+    cmigemo
   ];
 
   xdg.configFile."nvim/init.lua".source = ./init.lua;

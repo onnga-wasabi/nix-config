@@ -89,10 +89,6 @@ return {
 		},
 	},
 	keys = {
-		{ "<Leader>zn", "<cmd>:TZNarrow<cr>" },
-		{ "<Leader>zn", "<cmd>:'<,'>TZNarrow<cr>", mode = "v" },
-		{ "<Leader>zf", "<cmd>:TZFocus<cr>" },
-		{ "<Leader>zm", "<cmd>:TZMinimalist<cr>" },
-		{ "<Leader>za", "<cmd>:TZAtaraxis<cr><cmd>set nu<cr>" },
+		{ "<Leader>tz", "<cmd>:TZFocus<cr>" },
 	},
 }

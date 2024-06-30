@@ -13,7 +13,7 @@ set_keymap("n", "k", "gk", opts)
 set_keymap("n", "*", "*``", opts)
 set_keymap("n", "#", "#``", opts)
 set_keymap("n", "<c-c>", "<cmd>noh<cr>:w<cr>", opts)
-set_keymap("n", "<c-p>", '<cmd>echo expand("%")<cr>', opts)
+set_keymap("n", "<c-p>", '<cmd>lua vim.notify("Current file: " .. vim.fn.expand("%"))<cr>', opts)
 set_keymap("n", "<leader>r", "<cmd>source ~/.config/nvim/init.lua<cr>", opts)
 set_keymap("n", '<leader>"', 'gg"+yG', opts)
 
@@ -87,9 +87,4 @@ function _G.EBufdelete()
 		end
 	end
 end
-
--- キーマップの設定
 set_keymap("n", ",", "<cmd>silent! w<cr><cmd>lua EBufdelete()<cr>", opts)
-
--- Preview PlantUML
-set_keymap("n", "<c-w>l", "<cmd>silent! w<cr><c-w>l", opts)

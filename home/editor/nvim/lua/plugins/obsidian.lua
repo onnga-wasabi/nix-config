@@ -7,15 +7,35 @@ return {
 		"nvim-lua/plenary.nvim",
 
 		-- see below for full list of optional dependencies 👇
+		{
+			-- https://qiita.com/delphinus/items/c591ca78a4c44eaad9ed
+			"oflisback/obsidian-bridge.nvim",
+			event = {
+				"BufReadPre *.md",
+				"BufNewFile *.md",
+			},
+			lazy = true,
+			opts = {
+				scroll_sync = true,
+			},
+		},
+		{
+			"delphinus/obsidian-kensaku.nvim",
+			dependencies = {
+				"lambdalisue/kensaku.vim",
+				"vim-denops/denops.vim",
+			},
+		},
 	},
 	keys = {
-		{ "<a-o>n", "<cmd>ObsidianNew<cr>" },
-		{ "<a-o>w", "<cmd>ObsidianWorkspace<cr>" },
-		{ "<a-o>s", "<cmd>ObsidianQuickSwitch<cr>" },
-		{ "<a-o>d", "<cmd>ObsidianToday<cr>" },
-		{ "<a-o>t", "<cmd>ObsidianTemplate<cr>" },
-		{ "<a-o>p", "<cmd>ObsidianPasteImg<cr>" },
-		{ "<a-o>c", "<cmd>ObsidianToggleCheckBox<cr>" },
+		{ "<leader>zn", "<cmd>ObsidianNew<cr>" },
+		{ "<leader>zw", "<cmd>ObsidianWorkspace<cr>" },
+		{ "<leader>zs", "<cmd>ObsidianQuickSwitch<cr>" },
+		{ "<leader>zd", "<cmd>ObsidianToday<cr>" },
+		{ "<leader>zt", "<cmd>ObsidianTemplate<cr>" },
+		{ "<leader>zp", "<cmd>ObsidianPasteImg<cr>" },
+		{ "<leader>zc", "<cmd>ObsidianToggleCheckBox<cr>" },
+		{ "<leader>zk", "<cmd>ObsidianKensaku<cr>" },
 	},
 	config = function()
 		local obsidian = require("obsidian")
@@ -159,7 +179,15 @@ return {
 					note:add_alias(note.title)
 				end
 
-				local out = { id = note.id, aliases = note.aliases, tags = note.tags }
+				if #note.tags == 0 then
+					note:add_tag("untagged")
+				end
+
+				local out = {
+					id = note.id,
+					aliases = note.aliases,
+					tags = note.tags,
+				}
 
 				-- `note.metadata` contains any manually added fields in the frontmatter.
 				-- So here we just make sure those fields are kept in the frontmatter.
@@ -178,7 +206,15 @@ return {
 				date_format = "%Y-%m-%d",
 				time_format = "%H:%M",
 				-- A map for custom variables, the key should be the variable and the value a function
-				substitutions = {},
+				substitutions = {
+					-- e.g you can use {{yesterday}} in your templates
+					yesterday = function()
+						return os.date("%Y-%m-%d", os.time() - 86400)
+					end,
+					tomorrow = function()
+						return os.date("%Y-%m-%d", os.time() + 86400)
+					end,
+				},
 			},
 
 			-- Optional, by default when you use `:ObsidianFollowLink` on a link to an external
@@ -229,7 +265,9 @@ return {
 			callbacks = {
 				-- Runs at the end of `require("obsidian").setup()`.
 				---@param client obsidian.Client
-				post_setup = function(client) end,
+				post_setup = function(client)
+					require("obsidian-kensaku")(client)
+				end,
 
 				-- Runs anytime you enter the buffer for a note.
 				---@param client obsidian.Client
