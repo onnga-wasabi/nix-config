@@ -1,8 +1,9 @@
-{ config
+{ configlangde
 , pkgs
 , ...
 }: {
   imports = [
+    ./lua
     ./python
     ./rust
   ];
@@ -30,10 +31,6 @@
     # grpc
     protobuf_23
     grpcurl
-
-    # lua
-    lua
-    stylua
 
     # shell
     shellcheck

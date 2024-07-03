@@ -123,14 +123,14 @@ return {
 				local suffix = ""
 				if title ~= nil then
 					-- If title is given, transform it into valid file name.
-					suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+					suffix = title:gsub(" ", "_"):gsub('[<>:"/\\|?*.]', ""):lower()
 				else
 					-- If title is nil, just add 4 random uppercase letters to the suffix.
 					for _ = 1, 4 do
 						suffix = suffix .. string.char(math.random(65, 90))
 					end
 				end
-				return tostring(os.time()) .. "-" .. suffix
+				return tostring(os.date("%Y-%m-%d_%H-%M-%S_")) .. "_" .. suffix
 			end,
 
 			-- Optional, customize how note file names are generated given the ID, target directory, and title.
@@ -164,7 +164,7 @@ return {
 			---@return string
 			image_name_func = function()
 				-- Prefix image names with timestamp.
-				return string.format("%s-", os.time())
+				return tostring(os.date("%Y-%m-%d_%H-%M-%S_"))
 			end,
 
 			-- Optional, boolean or a function that takes a filename and returns a boolean.
@@ -238,12 +238,12 @@ return {
 				name = "telescope.nvim",
 				-- Optional, configure key mappings for the picker. These are the defaults.
 				-- Not all pickers support all mappings.
-				-- mappings = {
-				-- 	-- Create a new note from your query.
-				-- 	new = "<C-n>",
-				-- 	-- Insert a link to the selected note.
-				-- 	insert_link = "<C-l>",
-				-- },
+				mappings = {
+					-- Create a new note from your query.
+					-- new = "<C-n>",
+					-- Insert a link to the selected note.
+					insert_link = "<C-l>",
+				},
 			},
 
 			-- Optional, sort search results by "path", "modified", "accessed", or "created".

@@ -2,17 +2,19 @@
   imports = [
     ./daemon
     ./shell
+    ./hammerspoon
   ];
   home.packages = with pkgs; [
     asdf-vm
     coreutils
     gnused
+    inetutils
+    kitty
     neofetch
-    neovim
     nixpkgs-fmt
     unar
-    inetutils
-    nixpkgs-fmt
+    yabai
+    pkg-config
   ];
   xdg = {
     enable = true;

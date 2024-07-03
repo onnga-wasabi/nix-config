@@ -95,7 +95,7 @@ return {
 	config = function(_, opts)
 		local telescope = require("telescope")
 
-		telescope.load_extension("frecency")
+		-- telescope.load_extension("frecency")
 		telescope.load_extension("file_browser")
 		telescope.load_extension("aerial")
 		telescope.load_extension("neoclip")
@@ -106,12 +106,12 @@ return {
 		telescope.load_extension("fzf")
 	end,
 	keys = {
-		{
-			"<leader><leader>",
-			function()
-				require("telescope").extensions.frecency.frecency({ workspace = "CWD" })
-			end,
-		},
+		-- {
+		-- 	"<leader><leader>",
+		-- 	function()
+		-- 		require("telescope").extensions.frecency.frecency({ workspace = "CWD" })
+		-- 	end,
+		-- },
 		{
 			"<leader>p",
 			function()

@@ -1,8 +1,9 @@
-{ config
-, pkgs
+{ pkgs
 , ...
-}: {
+}:
+{
   home.packages = with pkgs; [
+    act
     bat
     csvq
     devbox
@@ -21,6 +22,7 @@
     navi
     nkf
     ripgrep
+    tlrc # tldr client written in Rust
     vivid
     xdg-ninja
     yt-dlp
