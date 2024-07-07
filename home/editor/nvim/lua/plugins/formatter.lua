@@ -2,9 +2,8 @@ return {
 	-- https://github.com/mhartington/formatter.nvim
 	"mhartington/formatter.nvim",
 	event = { "BufReadPre", "BufNewFile" },
-	keys = {
-		{ "<m-F>", "<cmd>Format<cr>" },
-	},
+
+	keys = { { "<m-F>", "<cmd>Format<cr>" } },
 	config = function()
 		-- Utilities for creating configurations
 		local util = require("formatter.util")

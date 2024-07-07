@@ -45,6 +45,3 @@ vim.o.conceallevel = 2
 
 -- Columns
 vim.o.signcolumn = "yes"
-vim.o.foldlevel = 20
-vim.o.foldmethod = "manual"
-vim.o.foldexpr = "nvim_treesitter#foldexpr()"

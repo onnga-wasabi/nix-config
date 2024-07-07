@@ -13,7 +13,6 @@
     fd
     fselect
     fzf
-    gnused
     go-migrate
     go-task
     graphviz

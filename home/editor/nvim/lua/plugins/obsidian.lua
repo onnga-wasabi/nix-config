@@ -240,7 +240,7 @@ return {
 				-- Not all pickers support all mappings.
 				mappings = {
 					-- Create a new note from your query.
-					-- new = "<C-n>",
+					-- new = "<A-c>",
 					-- Insert a link to the selected note.
 					insert_link = "<C-l>",
 				},

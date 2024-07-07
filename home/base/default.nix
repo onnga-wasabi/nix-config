@@ -15,6 +15,7 @@
     unar
     yabai
     pkg-config
+    wezterm
   ];
   xdg = {
     enable = true;

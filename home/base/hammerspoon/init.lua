@@ -11,5 +11,5 @@ end
 
 hs.application.enableSpotlightForNameSearches(true)
 hs.hotkey.bind({ "ctrl" }, "i", function()
-	toggleApp("kitty")
+	toggleApp("wezterm")
 end)
