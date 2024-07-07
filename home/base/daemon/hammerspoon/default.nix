@@ -47,8 +47,4 @@ in
   xdg.configFile."hammerspoon/init.lua" = {
     source = ./init.lua;
   };
-
-  xdg.configFile."kitty/kitty.conf" = {
-    source = ./kitty.conf;
-  };
 }

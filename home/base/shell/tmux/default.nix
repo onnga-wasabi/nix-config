@@ -1,5 +1,4 @@
-{ config
-, pkgs
+{ pkgs
 , ...
 }: {
   home.packages = with pkgs; [
@@ -7,5 +6,4 @@
   ];
 
   xdg.configFile."tmux/tmux.conf".source = ./tmux.conf;
-  xdg.configFile."tmux-powerline/config.sh".source = ./tmux-powerlinerc;
 }

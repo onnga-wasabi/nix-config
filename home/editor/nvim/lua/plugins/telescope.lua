@@ -73,7 +73,7 @@ return {
 				"%.xlsx",
 				"%.ipynb",
 			},
-			winblend = 10,
+			winblend = 5,
 		},
 		extensions = {
 			aerial = {
