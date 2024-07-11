@@ -21,7 +21,6 @@ alias ...="cd ../.."
 alias nd-init='echo "use nix" >> .envrc && direnv allow'
 
 # Tools
-alias sed=gsed
 alias ks=k9s
 alias k=kubectl
 alias kc=kubectx
