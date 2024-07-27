@@ -48,6 +48,9 @@ return {
 				json = {
 					require("formatter.filetypes.json").fixjson,
 				},
+				yaml = {
+					require("formatter.filetypes.yaml").yamlfmt,
+				},
 				python = {
 					require("formatter.filetypes.python").black,
 				},
@@ -67,6 +70,9 @@ return {
 					require("formatter.filetypes.nix").nixpkgs_fmt,
 				},
 				terraform = {
+					require("formatter.filetypes.terraform").terraformfmt,
+				},
+				hcl = {
 					require("formatter.filetypes.terraform").terraformfmt,
 				},
 				-- Use the special "*" filetype for defining formatter configurations on

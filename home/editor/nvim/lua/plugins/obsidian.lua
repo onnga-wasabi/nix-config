@@ -28,14 +28,14 @@ return {
 		},
 	},
 	keys = {
-		{ "<leader>zn", "<cmd>ObsidianNew<cr>" },
-		{ "<leader>zw", "<cmd>ObsidianWorkspace<cr>" },
-		{ "<leader>zs", "<cmd>ObsidianQuickSwitch<cr>" },
-		{ "<leader>zd", "<cmd>ObsidianToday<cr>" },
-		{ "<leader>zt", "<cmd>ObsidianTemplate<cr>" },
-		{ "<leader>zp", "<cmd>ObsidianPasteImg<cr>" },
-		{ "<leader>zc", "<cmd>ObsidianToggleCheckBox<cr>" },
-		{ "<leader>zk", "<cmd>ObsidianKensaku<cr>" },
+		{ "<leader>on", "<cmd>ObsidianNew<cr>" },
+		{ "<leader>ow", "<cmd>ObsidianWorkspace<cr>" },
+		{ "<leader>os", "<cmd>ObsidianQuickSwitch<cr>" },
+		{ "<leader>od", "<cmd>ObsidianToday<cr>" },
+		{ "<leader>ot", "<cmd>ObsidianTemplate<cr>" },
+		{ "<leader>op", "<cmd>ObsidianPasteImg<cr>" },
+		{ "<leader>oc", "<cmd>ObsidianToggleCheckBox<cr>" },
+		{ "<leader>ok", "<cmd>ObsidianKensaku<cr>" },
 	},
 	config = function()
 		local obsidian = require("obsidian")
@@ -72,7 +72,7 @@ return {
 				-- Optional, default tags to add to each new daily note created.
 				default_tags = { "daily-notes" },
 				-- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
-				template = nil,
+				template = "daily.md",
 			},
 
 			-- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.

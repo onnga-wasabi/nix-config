@@ -7,7 +7,7 @@ local config = wezterm.config_builder()
 config.window_decorations = "RESIZE"
 
 config.font = wezterm.font("JetBrains Mono")
-config.font_size = 16
+config.font_size = 15
 
 -- For example, changing the color scheme:
 -- config.color_scheme = 'AdventureTime'

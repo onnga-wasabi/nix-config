@@ -7,5 +7,6 @@ return {
 	keys = {
 		{ "<a-t>", "<cmd>ToggleTerm direction=float<cr>" },
 		{ "<a-t>", "<cmd>ToggleTerm direction=float<cr>", mode = "t" },
+		{ "<a-ESC>", [[<C-\><C-n>]], mode = "t" },
 	},
 }

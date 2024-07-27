@@ -6,6 +6,7 @@ return {
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 	},
+	keys = { { "<C-l>", "<cmd>LspStop<cr><cmd>LspRestart<cr>" } },
 	config = function()
 		-- mason
 		local ok, mason = pcall(require, "mason")

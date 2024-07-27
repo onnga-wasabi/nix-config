@@ -1,11 +1,12 @@
 return {
 	-- https://github.com/kndndrj/nvim-dbee
 	"kndndrj/nvim-dbee",
+	event = { "VeryLazy" },
 	dependencies = {
 		"MunifTanjim/nui.nvim",
 	},
 	keys = {
-		{ "<A-d>", "<cmd>Dbee toggle<cr>" },
+		{ "<A-d>", "<cmd>lua require('dbee').toggle()<cr>" },
 	},
 	build = function()
 		-- Install tries to automatically detect the install method.

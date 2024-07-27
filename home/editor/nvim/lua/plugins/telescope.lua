@@ -143,6 +143,12 @@ return {
 			end,
 		},
 		{
+			"<leader>r",
+			function()
+				require("telescope.builtin").resume()
+			end,
+		},
+		{
 			"<leader>f",
 			function()
 				require("telescope").extensions.file_browser.file_browser({ files = false, hidden = true })
@@ -185,7 +191,7 @@ return {
 
 		-- Outlie
 		{
-			"<leader>o",
+			"<leader>a",
 			function()
 				require("telescope").extensions.aerial.aerial()
 			end,
@@ -200,7 +206,7 @@ return {
 		},
 		-- Copilot Chat
 		{
-			"<leader>c",
+			"<leader>C",
 			function()
 				local actions = require("CopilotChat.actions")
 				require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
@@ -208,7 +214,7 @@ return {
 			desc = "CopilotChat - Prompt actions",
 		},
 		{
-			"<leader>c",
+			"<leader>C",
 			function()
 				local actions = require("CopilotChat.actions")
 				require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())

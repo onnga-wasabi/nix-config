@@ -25,6 +25,7 @@
     vivid
     xdg-ninja
     yt-dlp
+    yq
   ];
 
   programs.zsh = {
