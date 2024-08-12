@@ -152,5 +152,8 @@ return {
 				"markdown",
 			},
 		})
+
+		vim.lsp.set_log_level("ERROR")
+		-- vim.lsp.set_log_level("OFF")
 	end,
 }

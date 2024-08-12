@@ -9,6 +9,7 @@ return {
 		"gbprod/yanky.nvim",
 		"AckslD/nvim-neoclip.lua",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+		"nvim-telescope/telescope-dap.nvim",
 	},
 	opts = {
 		defaults = {
@@ -116,12 +117,6 @@ return {
 			"<leader>p",
 			function()
 				require("telescope.builtin").find_files({ hidden = true })
-			end,
-		},
-		{
-			"<leader>d",
-			function()
-				require("telescope.builtin").find_files({ hidden = true, cwd = vim.fn.expand("~/nix-config") })
 			end,
 		},
 		{

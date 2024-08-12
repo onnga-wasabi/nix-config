@@ -5,6 +5,7 @@
     neovim
     sqlfluff
     nodePackages_latest.fixjson
+    tree-sitter
 
     # obsidian
     pngpaste

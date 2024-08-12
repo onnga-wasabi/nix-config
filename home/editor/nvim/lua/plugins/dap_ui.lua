@@ -3,6 +3,7 @@ return {
 	"rcarriga/nvim-dap-ui",
 	dependencies = {
 		"mfussenegger/nvim-dap",
+		"nvim-neotest/nvim-nio",
 	},
 	opts = {
 		controls = {
@@ -86,6 +87,11 @@ return {
 		},
 	},
 	keys = {
-		-- { "<leader><leader>", function() require("dapui").toggle() end },
+		-- {
+		-- 	"<leader><leader>",
+		-- 	function()
+		-- 		require("dapui").toggle()
+		-- 	end,
+		-- },
 	},
 }
