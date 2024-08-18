@@ -34,25 +34,25 @@ return {
 			-- https://github.com/mfussenegger/nvim-dap
 			"mfussenegger/nvim-dap",
 			dependencies = {
-				{
-					"microsoft/vscode-js-debug",
-					lazy = true,
-					build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
-				},
-				{
-					"mxsdev/nvim-dap-vscode-js",
-					opts = {
-						-- vscde-js-debug に依存
-						debugger_path = vim.fn.stdpath("data") .. "/lazy/vscode-js-debug",
-						adapters = {
-							"pwa-node",
-							"pwa-chrome",
-							"pwa-msedge",
-							"node-terminal",
-							"pwa-extensionHost",
-						},
-					},
-				},
+				-- {
+				-- 	"microsoft/vscode-js-debug",
+				-- 	lazy = true,
+				-- 	build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
+				-- },
+				-- {
+				-- 	"mxsdev/nvim-dap-vscode-js",
+				-- 	opts = {
+				-- 		-- vscde-js-debug に依存
+				-- 		debugger_path = vim.fn.stdpath("data") .. "/lazy/vscode-js-debug",
+				-- 		adapters = {
+				-- 			"pwa-node",
+				-- 			"pwa-chrome",
+				-- 			"pwa-msedge",
+				-- 			"node-terminal",
+				-- 			"pwa-extensionHost",
+				-- 		},
+				-- 	},
+				-- },
 			},
 			config = function()
 				local dap = require("dap")

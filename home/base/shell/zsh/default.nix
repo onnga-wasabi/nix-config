@@ -1,4 +1,5 @@
 { pkgs
+, lib
 , ...
 }:
 {
@@ -19,13 +20,17 @@
     jnv
     jq
     navi
+    neofetch
     nkf
     ripgrep
-    tlrc # tldr client written in Rust
+    serpl
+    tlrc
+    unar
     vivid
+    wireshark
     xdg-ninja
-    yt-dlp
     yq
+    yt-dlp
   ];
 
   programs.zsh = {

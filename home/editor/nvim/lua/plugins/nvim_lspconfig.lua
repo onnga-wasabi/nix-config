@@ -1,10 +1,72 @@
 return {
 	-- https://github.com/neovim/nvim-lspconfig
 	"neovim/nvim-lspconfig",
-	event = { "BufReadPre", "BufNewFile" },
+	event = { "VimEnter" },
 	dependencies = {
-		"williamboman/mason.nvim",
-		"williamboman/mason-lspconfig.nvim",
+		{
+			-- https://www.lazyvim.org/plugins/lsp
+			"williamboman/mason.nvim",
+			cmd = "Mason",
+			build = ":MasonUpdate",
+			opts_extend = { "ensure_installed" },
+			opts = {
+				ensure_installed = {
+					"buf",
+					"buf-language-server",
+					"clangd",
+					"dockerfile-language-server",
+					"emmet-ls",
+					"eslint_d",
+					"flake8",
+					"golangci-lint",
+					"golangci-lint-langserver",
+					"gopls",
+					"groovy-language-server",
+					"isort",
+					"jdtls",
+					"kotlin-language-server",
+					"ltex-ls",
+					"lua-language-server",
+					"marksman",
+					"opencl-language-server",
+					"prettier",
+					"pyright",
+					"robotframework-lsp",
+					"ruby-lsp",
+					"shfmt",
+					"stylua",
+					"taplo",
+					"terraform-ls",
+					"texlab",
+					"typescript-language-server",
+					"vim-language-server",
+					"yaml-language-server",
+					"yamlfmt",
+					"yamllint",
+					"rnix-lsp",
+					"nil",
+					"nixpkgs-fmt",
+				},
+			},
+			config = function(_, opts)
+				require("mason").setup(opts)
+				local mr = require("mason-registry")
+				local function ensure_installed()
+					for _, tool in ipairs(opts.ensure_installed) do
+						local p = mr.get_package(tool)
+						if not p:is_installed() then
+							p:install()
+						end
+					end
+				end
+				if mr.refresh then
+					mr.refresh(ensure_installed)
+				else
+					ensure_installed()
+				end
+			end,
+		},
+		{ "williamboman/mason-lspconfig.nvim", config = function() end },
 	},
 	keys = { { "<C-l>", "<cmd>LspStop<cr><cmd>LspRestart<cr>" } },
 	config = function()

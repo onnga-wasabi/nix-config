@@ -35,5 +35,7 @@
     # shell
     shellcheck
     shfmt
+
+    ruby
   ];
 }

@@ -9,8 +9,8 @@ tasks:
   format:
     desc: 'format'
     cmds:
-      - nixpkgs-fmt .
-      - stylua .
+      - nix --extra-experimental-features "nix-command flakes" shell nixpkgs#nixpkgs-fmt -c nixpkgs-fmt  .
+      - nix --extra-experimental-features "nix-command flakes" shell nixpkgs#stylua -c stylua  .
     silent: false
   build:
     desc: 'build'
@@ -18,15 +18,18 @@ tasks:
       - stage
       - format
     vars:
-      LOCAL_HOST_NAME:
-        sh: scutil --get LocalHostName
+      PLATFORM:
+        sh: uname -s
     cmds:
-      - nix --extra-experimental-features "nix-command flakes" build --max-jobs 4 ".#darwinConfigurations.{{.LOCAL_HOST_NAME}}.system"
+      - nix --extra-experimental-features "nix-command flakes" build --max-jobs 4 ".#darwinConfigurations.{{.PLATFORM}}.system"
     silent: false
   apply:
     desc: 'apply'
     deps:
       - build
+    vars:
+      PLATFORM:
+        sh: uname -s
     cmds:
-      - ./result/sw/bin/darwin-rebuild switch --flake ".#"
+      - ./result/sw/bin/darwin-rebuild switch --flake ".#{{.PLATFORM}}"
     silent: false

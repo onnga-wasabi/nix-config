@@ -9,5 +9,7 @@
     postgresql
     sqlite
     pgcli
+    openssl
+    curl
   ];
 }

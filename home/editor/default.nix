@@ -2,7 +2,7 @@
 }: {
   imports = [
     ./cspell
-    ./latex
+    # ./latex
     ./nvim
     ./obsidian
     ./vscode

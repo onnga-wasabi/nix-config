@@ -4,13 +4,11 @@
     ./shell
   ];
   home.packages = with pkgs; [
-    asdf-vm
+    cmake
     coreutils
     gnused
     inetutils
-    neofetch
     nixpkgs-fmt
-    unar
     pkg-config
   ];
   xdg = {

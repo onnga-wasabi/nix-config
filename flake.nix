@@ -1,5 +1,5 @@
 {
-  description = "Example Darwin system flake";
+  description = "Darwin system flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -109,19 +109,11 @@
       ];
     in
     {
-      # Build darwin flake using:
-      # $ darwin-rebuild build --flake .#Air
       darwinConfigurations = {
-        Air = nix-darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
-          modules = modules;
-        };
-        Chill = nix-darwin.lib.darwinSystem {
+        Darwin = nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           modules = modules;
         };
       };
-      # Expose the package set, including overlays, for convenience.
-      # darwinPackages = self.darwinConfigurations."Air".pkgs;
     };
 }

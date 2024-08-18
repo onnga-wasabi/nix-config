@@ -1,5 +1,4 @@
 # fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!**/.git/*"'
 export FZF_DEFAULT_OPTS="
     --height 80% --reverse --border=sharp --margin=0,1
@@ -17,3 +16,4 @@ export FZF_CTRL_R_OPTS="
     --preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'
 "
 
+source <(fzf --zsh)

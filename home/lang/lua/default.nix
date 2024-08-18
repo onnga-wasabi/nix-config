@@ -4,6 +4,7 @@
 {
   home.packages = with pkgs; [
     stylua
-    lua
+    lua51Packages.lua
+    lua51Packages.luarocks
   ];
 }
