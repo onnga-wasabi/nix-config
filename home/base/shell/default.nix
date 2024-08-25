@@ -1,5 +1,4 @@
-{ pkgs
-, ...
+{ ...
 }: {
   imports = [
     ./git
@@ -7,5 +6,6 @@
     ./tmux
     ./gcp
     ./zsh
+    ./terraform
   ];
 }

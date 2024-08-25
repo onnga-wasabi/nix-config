@@ -1,5 +1,4 @@
 { pkgs
-, lib
 , ...
 }:
 {
@@ -35,7 +34,6 @@
 
   programs.zsh = {
     enable = true;
-    # for the environment variables
     envExtra = ''
       export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
     '';

@@ -10,10 +10,9 @@ return {
 		{
 			-- https://github.com/MattiasMTS/cmp-dbee/issues/18
 			"MattiasMTS/cmp-dbee",
-			event = "VeryLazy",
 			commit = "0feabc1",
 			dependencies = {
-				{ "kndndrj/nvim-dbee", lazy = true },
+				{ "kndndrj/nvim-dbee" },
 			},
 			ft = "sql",
 			opts = {},
@@ -42,7 +41,6 @@ return {
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
 				{ name = "cmp-dbee" },
-				{ name = "skkeleton" },
 			}, {
 				{ name = "buffer" },
 			}),

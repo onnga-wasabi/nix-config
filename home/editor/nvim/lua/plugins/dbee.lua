@@ -200,7 +200,7 @@ return {
 				buffer_options = {},
 
 				-- directory where to store the scratchpads.
-				directory = os.getenv("XDG_STATE_HOME") .. "/nvim/dbee/notes",
+				directory = os.getenv("DBEE_NOTES") or os.getenv("XDG_STATE_HOME") .. "/nvim/dbee/notes",
 
 				-- mappings for the buffer
 				mappings = {

@@ -6,6 +6,7 @@
     kube-score
     kubectl
     kubectx
+    kustomize
     stern
   ];
 

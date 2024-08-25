@@ -10,6 +10,7 @@
     inetutils
     nixpkgs-fmt
     pkg-config
+    devbox
   ];
   xdg = {
     enable = true;
