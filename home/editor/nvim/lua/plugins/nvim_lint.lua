@@ -11,6 +11,9 @@ return {
 			javascript = {
 				"eslint_d",
 			},
+			scala = {
+				"cspell",
+			},
 		}
 
 		-- check lint autocmd

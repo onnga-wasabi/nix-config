@@ -18,6 +18,7 @@ export LIBSQLITE="/nix/store/${_SQLITE3_DIR}/lib/libsqlite3.dylib"
 export LIBGIT2=$(ls /nix/store | rg libgit2 | xargs -I{} find /nix/store/{} -name '*.dylib' | head -n 1)
 
 export PATH=${PATH}:${HOME}/.local/bin
+export PATH=${PATH}:${HOME}/.docker/bin
 
 LOCAL_ZSH_RC=${XDG_CONFIG_HOME}/zsh/rc/local.rc.zsh
 if [ -f ${LOCAL_ZSH_RC} ]; then

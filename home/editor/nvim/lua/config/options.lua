@@ -45,3 +45,6 @@ vim.o.conceallevel = 2
 
 -- Columns
 vim.o.signcolumn = "yes"
+
+-- Performance
+vim.o.history = 1000

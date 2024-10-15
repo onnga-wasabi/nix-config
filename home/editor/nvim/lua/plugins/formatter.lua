@@ -75,6 +75,16 @@ return {
 				hcl = {
 					require("formatter.filetypes.terraform").terraformfmt,
 				},
+				scala = {
+					{
+						exe = "scalafmt",
+						args = {
+							"--stdin",
+							"--stdout",
+						},
+						stdin = true,
+					},
+				},
 				-- Use the special "*" filetype for defining formatter configurations on
 				-- any filetype
 				-- ["*"] = {

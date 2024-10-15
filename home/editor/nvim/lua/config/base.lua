@@ -21,10 +21,9 @@ set_keymap("n", "k", "gk")
 set_keymap("n", "*", "*``")
 set_keymap("n", "#", "#``")
 set_keymap("n", "<c-c>", "<cmd>noh<cr>:w<cr>")
-set_keymap("n", "<c-p>", '<cmd>lua vim.notify("Current file: " .. vim.fn.expand("%"))<cr>')
+set_keymap("n", "<a-p>", '<cmd>lua vim.notify("Current file: " .. vim.fn.expand("%"))<cr>')
 set_keymap("n", "<leader>r", "<cmd>source ~/.config/nvim/init.lua<cr>")
 set_keymap("n", '<leader>"', 'gg"+yG')
-
 -- windows and buffers
 set_keymap("n", "<c-w>v", "<c-w>v<c-w>l")
 set_keymap("n", "<c-w>s", "<c-w>s<c-w>j")

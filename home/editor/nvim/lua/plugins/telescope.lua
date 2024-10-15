@@ -73,6 +73,7 @@ return {
 				"%__pycache__/*",
 				"%.xlsx",
 				"%.ipynb",
+				"%target/",
 			},
 			winblend = 5,
 		},

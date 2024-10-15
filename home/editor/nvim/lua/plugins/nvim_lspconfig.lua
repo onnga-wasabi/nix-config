@@ -23,7 +23,7 @@ return {
 					"gopls",
 					"groovy-language-server",
 					"isort",
-					"jdtls",
+					-- "jdtls",
 					"kotlin-language-server",
 					"ltex-ls",
 					"lua-language-server",
@@ -97,7 +97,12 @@ return {
 
 		lspconfig.bufls.setup({})
 
-		lspconfig.metals.setup({})
+		-- see metasl.lua
+		--
+		-- lspconfig.jdtls.setup({})
+		-- lspconfig.metals.setup({
+		-- 	filetypes = { "scala", "sbt" },
+		-- })
 
 		lspconfig.pyright.setup({})
 
@@ -157,8 +162,6 @@ return {
 
 		lspconfig.html.setup({})
 		lspconfig.marksman.setup({})
-
-		lspconfig.jdtls.setup({})
 
 		lspconfig.tsserver.setup({
 			filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
