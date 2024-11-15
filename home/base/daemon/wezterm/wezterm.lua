@@ -46,5 +46,14 @@ config.send_composed_key_when_right_alt_is_pressed = false
 -- image
 -- config.enable_kitty_graphics = true
 
+-- ime
+--
+config.use_ime = true
+-- terminal でめっちゃ日本語打つとき
+-- config.macos_forward_to_ime_modifier_mask = "CTRL"
+-- config.keys = {
+-- 	{ key = "q", mods = "CTRL", action = wezterm.action({ SendString = "\x11" }) },
+-- }
+
 -- and finally, return the configuration to wezterm
 return config

@@ -17,6 +17,12 @@ return {
 			ft = "sql",
 			opts = {},
 		},
+		{
+			"rinx/cmp-skkeleton",
+			dependencies = {
+				"vim-skk/skkeleton",
+			},
+		},
 	},
 	config = function()
 		local cmp = require("cmp")
@@ -41,6 +47,7 @@ return {
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
 				{ name = "cmp-dbee" },
+				{ name = "skkeleton" },
 			}, {
 				{ name = "buffer" },
 			}),

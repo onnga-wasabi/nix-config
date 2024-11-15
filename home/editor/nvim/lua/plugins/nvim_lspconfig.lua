@@ -68,7 +68,9 @@ return {
 		},
 		{ "williamboman/mason-lspconfig.nvim", config = function() end },
 	},
-	keys = { { "<C-l>", "<cmd>LspStop<cr><cmd>LspRestart<cr>" } },
+	keys = {
+		{ "<A-l>", "<cmd>LspStop<cr><cmd>LspRestart<cr>" },
+	},
 	config = function()
 		-- mason
 		local ok, mason = pcall(require, "mason")
@@ -163,7 +165,7 @@ return {
 		lspconfig.html.setup({})
 		lspconfig.marksman.setup({})
 
-		lspconfig.tsserver.setup({
+		lspconfig.ts_ls.setup({
 			filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
 			cmd = { "typescript-language-server", "--stdio" },
 		})
