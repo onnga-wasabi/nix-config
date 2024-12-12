@@ -9,4 +9,3 @@ require("config.lazy")
 if file_exists(vim.fn.stdpath("config") .. "secrets") then
 	require("config.secrets")
 end
-require("config.secrets")
