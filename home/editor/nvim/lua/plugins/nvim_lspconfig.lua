@@ -97,8 +97,6 @@ return {
 		lspconfig.rnix.setup({})
 		lspconfig.nil_ls.setup({})
 
-		lspconfig.bufls.setup({})
-
 		-- see metasl.lua
 		--
 		-- lspconfig.jdtls.setup({})
@@ -160,7 +158,7 @@ return {
 			},
 		})
 
-		lspconfig.bufls.setup({})
+		lspconfig.buf_ls.setup({})
 
 		lspconfig.html.setup({})
 		lspconfig.marksman.setup({})
