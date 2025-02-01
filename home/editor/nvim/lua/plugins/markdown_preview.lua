@@ -1,12 +1,13 @@
 return {
-	-- https://github.com/iamcco/markdown-preview.nvim
-	"iamcco/markdown-preview.nvim",
-	ft = {
-		"markdown",
-		"plantuml",
-	},
-	config = function()
-		vim.cmd([[
+	{
+		-- https://github.com/iamcco/markdown-preview.nvim
+		"iamcco/markdown-preview.nvim",
+		ft = {
+			"markdown",
+			"plantuml",
+		},
+		config = function()
+			vim.cmd([[
             " set to 1, nvim will open the preview window after entering the markdown buffer
             " default: 0
             let g:mkdp_auto_start = 0
@@ -106,6 +107,16 @@ return {
             " By default the theme is define according to the preferences of the system
             let g:mkdp_theme = 'light'
         ]])
-		vim.fn["mkdp#util#install"]()
-	end,
+			vim.fn["mkdp#util#install"]()
+		end,
+	},
+	{
+		-- https://github.com/dhruvasagar/vim-table-mode
+		"dhruvasagar/vim-table-mode",
+		cmd = "TableModeRealign",
+	},
+	{
+		-- https://github.com/mattn/vim-maketable
+		"mattn/vim-maketable",
+	},
 }

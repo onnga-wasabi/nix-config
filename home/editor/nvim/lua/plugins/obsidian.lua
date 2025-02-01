@@ -46,10 +46,6 @@ return {
 					name = "personal",
 					path = obsidian_state_home .. "/vaults/personal",
 				},
-				{
-					name = "work",
-					path = obsidian_state_home .. "/vaults/work",
-				},
 			},
 			-- Alternatively - and for backwards compatibility - you can set 'dir' to a single path instead of
 			-- 'workspaces'. For example:

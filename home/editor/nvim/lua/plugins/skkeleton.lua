@@ -30,7 +30,6 @@ return {
 					data_dir .. "/skk/SKK-JISYO.zipcode",
 				},
 				sources = {
-					-- ▽にほ
 					"skk_dictionary",
 					-- "deno_kv",
 					-- "google_japanese_input",
