@@ -6,6 +6,7 @@
     ./wezterm
   ];
   home.packages = with pkgs; [
+    dbeaver-bin
     postgresql
     sqlite
     pgcli

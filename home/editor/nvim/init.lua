@@ -1,11 +1,2 @@
-require("util.io")
-
-require("config.base")
-require("config.options")
-require("config.ui")
--- require("config/foldings")
+-- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
-
-if file_exists(vim.fn.stdpath("config") .. "secrets") then
-	require("config.secrets")
-end

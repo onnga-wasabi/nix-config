@@ -49,12 +49,15 @@ config.send_composed_key_when_right_alt_is_pressed = false
 -- ime
 --
 -- config.use_ime = true
-config.use_ime = false -- 結局打ちにくいので raycast で打ってコピペがいいよ
+config.use_ime = true -- 結局打ちにくいので raycast で打ってコピペがいいよ
 -- terminal でめっちゃ日本語打つとき
 -- config.macos_forward_to_ime_modifier_mask = "CTRL"
 -- config.keys = {
 -- 	{ key = "q", mods = "CTRL", action = wezterm.action({ SendString = "\x11" }) },
 -- }
+--
+config.front_end = "WebGpu"
+config.enable_wayland = false
 
 -- and finally, return the configuration to wezterm
 return config

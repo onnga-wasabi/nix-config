@@ -1,4 +1,6 @@
--- コメント書いたところで思い出せないから全部 help してくれ
+-- Options are automatically loaded before lazy.nvim startup
+-- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
+-- Add any additional options here
 
 -- Encoding
 vim.o.encoding = "utf-8"
@@ -40,7 +42,7 @@ vim.o.showtabline = 4
 vim.o.shiftwidth = 4
 vim.o.tabstop = 4
 vim.o.laststatus = 3
-vim.o.ambiwidth = "double"
+-- vim.o.ambiwidth = "double"
 vim.o.conceallevel = 2
 
 -- Columns
@@ -48,3 +50,9 @@ vim.o.signcolumn = "yes"
 
 -- Performance
 vim.o.history = 1000
+
+-- LazyVim Default Options left
+-- https://www.lazyvim.org/configuration/general
+
+-- LazyVim auto format
+vim.g.autoformat = false

@@ -8,6 +8,6 @@
   ];
 
   home.username = "wasabi";
-  home.stateVersion = "24.05";
+  home.stateVersion = "24.11";
   programs.home-manager.enable = true; # Let Home Manager install and manage itself.
 }

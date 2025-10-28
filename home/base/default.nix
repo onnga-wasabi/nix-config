@@ -5,8 +5,7 @@
   ];
   home.packages = with pkgs; [
     cmake
-    coreutils
-    gnused
+    # coreutils
     inetutils
     nixpkgs-fmt
     pkg-config

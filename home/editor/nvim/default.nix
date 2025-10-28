@@ -1,8 +1,8 @@
 { pkgs
 , ...
 }: {
+  programs.neovim.enable = true;
   home.packages = with pkgs; [
-    neovim
     sqlfluff
     nodePackages_latest.fixjson
     tree-sitter
