@@ -31,5 +31,5 @@ tasks:
       PLATFORM:
         sh: uname -s
     cmds:
-      - ./result/sw/bin/darwin-rebuild switch --flake ".#{{.PLATFORM}}"
+      - sudo ./result/sw/bin/darwin-rebuild switch --flake ".#{{.PLATFORM}}"
     silent: false

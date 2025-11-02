@@ -178,7 +178,7 @@ gui:
 
   # Default size for focused window. Window size can be changed from within Lazygit with '+' and '_' (but this won't change the default).
   # One of: 'normal' (default) | 'half' | 'full'
-  windowSize: normal
+  screenMode: normal
 
   # Window border style.
   # One of 'rounded' (default) | 'single' | 'double' | 'hidden'
@@ -271,7 +271,8 @@ git:
   branchLogCmd: git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --
 
   # Command used to display git log of all branches in the main window
-  allBranchesLogCmd: git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium
+  allBranchesLogCmds:
+    - git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium
 
   # If true, do not spawn a separate process when using GPG
   overrideGpg: false
@@ -282,10 +283,9 @@ git:
   # See https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#predefined-commit-message-prefix
   commitPrefix:
     # pattern to match on. E.g. for 'feature/AB-123' to match on the AB-123 use "^\\w+\\/(\\w+-\\w+).*"
-    pattern: ""
-
     # Replace directive. E.g. for 'feature/AB-123' to start the commit message with 'AB-123 ' use "[$1] "
-    replace: ""
+    - pattern: ""
+      replace: ""
 
   # If true, parse emoji strings in commit messages e.g. render :rocket: as 🚀
   # (This should really be under 'gui', not 'git')
@@ -455,7 +455,7 @@ keybinding:
     scrollDownMain-alt1: J
     scrollUpMain-alt2: <c-f>
     scrollDownMain-alt2: <c-b>
-    executeCustomCommand: ':'
+    executeShellCommand: ':'
     createRebaseOptionsMenu: m
 
     # 'Files' appended for legacy reasons
@@ -573,4 +573,4 @@ customCommands:
     description: commit with commitizen
     context: files
     loadingText: opening commitizen
-    subprocess: true
+    output: terminal

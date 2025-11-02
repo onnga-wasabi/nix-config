@@ -29,7 +29,6 @@
     yarn
 
     # grpc
-    protobuf_23
     grpcurl
 
     # shell

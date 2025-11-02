@@ -16,7 +16,7 @@ let
           hash = "sha256-KileDwgVnrbJ6sCv6d4PjnyYqrEmZK6JESYa7+rBneo=";
         };
 
-        cargoHash = "sha256-v3yXSnGoHn+7uZWOyqdvvRTtbg0N8six53J05YYbn4A=";
+        cargoHash = "sha256-Ez5auzmLx2WIhvV14YFPUwHfru+tx5iNlVmIEwv2EY8=";
 
         meta = with lib; {
           description = "Command line csv viewer";
