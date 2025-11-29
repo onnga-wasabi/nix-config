@@ -12,5 +12,7 @@
     pgcli
     openssl
     curl
+    ffmpeg
+    gemini-cli
   ];
 }

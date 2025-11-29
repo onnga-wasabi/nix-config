@@ -1,1 +1,38 @@
-return {}
+return {
+  {
+    "nvim-telescope/telescope.nvim",
+    opts = {
+      defaults = {
+        file_ignore_patterns = {
+          "node_modules/",
+          "submodules/",
+          "bundle/",
+          "tmux-powerline/",
+          "%.git/",
+          "%.tmp/*",
+          "%.jpg",
+          "%.jpeg",
+          "%.png",
+          "%.zip",
+          "%.tar",
+          "%.tar.gz",
+          ".tmp/",
+          "%.gradle/",
+          "%.metals/",
+          "%.class",
+          "%.jar",
+          "%.csv",
+          "%mocks/",
+          "_mock.go",
+          "%.pb.go",
+          "%.pyi",
+          "%__pycache__/*",
+          "%.xlsx",
+          "%.ipynb",
+          "%target/",
+          "%mocks/*",
+        },
+      },
+    },
+  },
+}

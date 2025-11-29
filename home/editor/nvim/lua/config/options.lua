@@ -56,3 +56,6 @@ vim.o.history = 1000
 
 -- LazyVim auto format
 vim.g.autoformat = false
+
+-- Enforce LazyVim-Extras
+vim.g.lazyvim_picker = "telescope"

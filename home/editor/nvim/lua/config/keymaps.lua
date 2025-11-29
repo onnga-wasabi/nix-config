@@ -11,7 +11,7 @@ vim.g.omni_sql_no_default_maps = 1
 ---             respectively
 --- @param lhs string Left-hand-side `{lhs}` of the mapping.
 --- @param rhs string Right-hand-side `{rhs}` of the mapping.
-function set_keymap(mode, lhs, rhs)
+local function set_keymap(mode, lhs, rhs)
   local opts = { noremap = true, silent = true }
   vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
 end
