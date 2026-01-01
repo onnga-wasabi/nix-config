@@ -1,6 +1,15 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 
+-- ウィンドウフォーカス時に IME を英数に切り替える
+wezterm.on("window-focus-changed", function(window, pane)
+	-- window:is_focused() を使用して、フォーカスを得た時のみ実行する
+	if window:is_focused() then
+		-- Nix 経由で im-select を入れている場合、パスが通っていればこれで動作します
+		local _success, _stdout, _stderr = wezterm.run_child_process({ "im-select", "com.apple.keylayout.ABC" })
+	end
+end)
+
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 

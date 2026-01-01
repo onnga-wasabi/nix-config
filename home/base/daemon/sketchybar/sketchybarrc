@@ -1,0 +1,155 @@
+#!/bin/bash
+
+# --- カラーパレット (深夜仕様: 背景は暗く、文字は白く) ---
+WHITE=0xffffffff
+GREY=0xff9399b2
+TRANSPARENT=0x00000000
+
+# バーの背景 (ほぼ黒に近いグレー)
+BAR_COLOR=0xff1e1e2e 
+
+# アイテムごとの背景色 (かなり暗めのトーンに変更)
+# これにより白文字が映えます
+BG_MAIN=0xff2e3440       # デフォルト/FrontAppなど
+BG_ACCENT=0xff4c566a     # 装飾用
+BG_WIFI=0xff493863       # 暗い紫
+BG_VOL=0xff243959        # 暗い青
+BG_BATT=0xff2f4335       # 暗い緑
+BG_DATE=0xff544026       # 暗いオレンジ/茶
+BG_CLOCK=0xff264850      # 暗いティール
+
+# --- フォント設定 ---
+LABEL_FONT="SF Pro:Bold:14.0"
+ICON_FONT="Hack Nerd Font:Regular:18.0"
+
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+
+##### Bar Appearance #####
+bar=(
+height=44
+  color=$BAR_COLOR
+  border_width=0
+  position=top
+  sticky=on
+  padding_left=15
+  padding_right=15
+  y_offset=10
+  margin=15
+  corner_radius=12
+  blur_radius=40
+  notch_width=188
+)
+sketchybar --bar "${bar[@]}"
+
+##### Defaults #####
+default=(
+  padding_left=8
+  padding_right=8
+  icon.font="$ICON_FONT"
+  label.font="$LABEL_FONT"
+
+  # ★ここが重要: 文字もアイコンも全て白にする
+  icon.color=$WHITE
+  label.color=$WHITE
+
+  background.corner_radius=8
+  background.height=30
+
+  # 余白設定 (ゆったり)
+  icon.padding_left=10
+  icon.padding_right=10
+  label.padding_right=10
+  label.padding_left=0
+)
+sketchybar --default "${default[@]}"
+
+##### Left Items #####
+
+# 1. Apple Logo
+sketchybar --add item apple.logo left \
+           --set apple.logo icon= \
+                 background.drawing=off \
+                 padding_right=15
+
+# 2. AeroSpace Workspaces
+sketchybar --add event aerospace_workspace_change
+
+for sid in $(aerospace list-workspaces --all); do
+    sketchybar --add item space.$sid left \
+        --subscribe space.$sid aerospace_workspace_change \
+        --set space.$sid \
+        label="$sid" \
+        icon.drawing=off \
+        background.drawing=off \
+        script="$PLUGIN_DIR/aerospace.sh $sid" \
+        click_script="aerospace workspace $sid" \
+        padding_left=4 padding_right=4
+done
+
+# 3. Separator
+sketchybar --add item separator left \
+           --set separator icon= \
+                 icon.font="Hack Nerd Font:Regular:16.0" \
+                 icon.color=$GREY \
+                 label.drawing=off \
+                 background.drawing=off \
+                 padding_left=15 padding_right=15
+
+# 4. Front App
+sketchybar --add item front_app left \
+           --set front_app icon= \
+           --set front_app icon.font="Hack Nerd Font:Bold:16.0" \
+           --set front_app background.color=$BG_MAIN \
+           --set front_app script="$PLUGIN_DIR/front_app.sh" \
+           --subscribe front_app front_app_switched
+
+
+##### Right Items #####
+
+# 1. MeetingBar (Alias)
+# 背景を暗めのメイン色に、文字を白に強制
+sketchybar --add alias "MeetingBar" right \
+           --set "MeetingBar" update_freq=5 \
+           --set "MeetingBar" icon.padding_left=5 \
+           --set "MeetingBar" label.padding_right=5 \
+           --set "MeetingBar" background.color=$BG_MAIN \
+           --set "MeetingBar" background.corner_radius=8 \
+           --set "MeetingBar" background.height=30 \
+           --set "MeetingBar" label.color=$WHITE \
+           --set "MeetingBar" icon.color=$WHITE
+
+# 2. Wi-Fi
+sketchybar --add item wifi right \
+           --set wifi script="$PLUGIN_DIR/wifi.sh" \
+           --set wifi update_freq=60 \
+           --set wifi icon= \
+           --set wifi background.color=$BG_WIFI
+
+# 3. Volume
+sketchybar --add item volume right \
+           --set volume script="$PLUGIN_DIR/volume.sh" \
+           --subscribe volume volume_change \
+           --set volume icon= \
+           --set volume background.color=$BG_VOL
+
+# 4. Battery
+sketchybar --add item battery right \
+           --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
+           --subscribe battery system_woke power_source_change \
+           --set battery background.color=$BG_BATT
+
+# 5. Date
+sketchybar --add item date right \
+           --set date update_freq=60 \
+           --set date icon= \
+           --set date label="$(date '+%m/%d %a')" \
+           --set date background.color=$BG_DATE
+
+# 6. Clock
+sketchybar --add item clock right \
+           --set clock update_freq=10 script="$PLUGIN_DIR/clock.sh" \
+           --set clock icon= \
+           --set clock background.color=$BG_CLOCK
+
+##### Force Update #####
+sketchybar --update

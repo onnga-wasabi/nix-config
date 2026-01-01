@@ -40,3 +40,15 @@ function _G.EBufdelete()
     end
   end
 end
+
+-- im-select を使ってノーマルモード移行時に IME を OFF にする
+local im_select_group = vim.api.nvim_create_augroup("im_select", { clear = true })
+
+vim.api.nvim_create_autocmd({ "InsertLeave", "CmdlineLeave" }, {
+  group = im_select_group,
+  pattern = "*",
+  callback = function()
+    -- Mac のデフォルト英語入力ソース "com.apple.keylayout.ABC" に切り替え
+    vim.fn.system("im-select com.apple.keylayout.ABC")
+  end,
+})
