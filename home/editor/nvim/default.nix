@@ -3,11 +3,10 @@
 }: {
   programs.neovim.enable = true;
   home.packages = with pkgs; [
-    sqlfluff
+    # sqlfluff
     nodePackages_latest.fixjson
     tree-sitter
 
-    # obsidian
     pngpaste
     cmigemo
   ];

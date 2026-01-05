@@ -3,8 +3,8 @@
 }: {
   imports = [
     # ./hammerspoon
+    ./aerospace
     ./wezterm
-    ./sketchybar
   ];
   home.packages = with pkgs; [
     dbeaver-bin
@@ -15,6 +15,5 @@
     curl
     ffmpeg
     gemini-cli
-    aerospace
   ];
 }

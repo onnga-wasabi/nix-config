@@ -1,0 +1,75 @@
+config-version = 2
+
+persistent-workspaces = ['T', 'B', 'N', 'S', 'A', 'G']
+
+[gaps]
+    inner.horizontal = 10
+    inner.vertical =   10
+    outer.left =       10
+    outer.bottom =     10
+    outer.top =        10
+    outer.right =      10
+
+[mode.main.binding]
+    alt-slash = 'layout tiles horizontal vertical'
+    alt-comma = 'layout accordion horizontal vertical'
+
+    alt-h = 'focus left'
+    alt-j = 'focus down'
+    alt-k = 'focus up'
+    alt-l = 'focus right'
+    cmd-alt-f = 'fullscreen'
+
+    alt-shift-h = 'move left'
+    alt-shift-j = 'move down'
+    alt-shift-k = 'move up'
+    alt-shift-l = 'move right'
+
+    alt-minus = 'resize smart -50'
+    alt-equal = 'resize smart +50'
+
+    # ワークスペース移動
+    alt-b = 'workspace B'
+    alt-n = 'workspace N'
+    alt-s = 'workspace S'
+    alt-t = 'workspace T'
+    alt-a = 'workspace A'
+    alt-g = 'workspace G'
+
+    # ウインドウ移動
+    alt-shift-b = 'move-node-to-workspace B'
+    alt-shift-t = 'move-node-to-workspace T'
+    alt-shift-n = 'move-node-to-workspace N'
+    alt-shift-s = 'move-node-to-workspace S'
+    alt-shift-a = 'move-node-to-workspace A'
+    alt-shift-g = 'move-node-to-workspace G'
+
+    alt-tab = 'workspace-back-and-forth'
+    alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+    alt-shift-semicolon = 'mode service'
+
+[mode.service.binding]
+    esc = ['reload-config', 'mode main']
+    r = ['flatten-workspace-tree', 'mode main']
+    f = ['layout floating tiling', 'mode main']
+    backspace = ['close-all-windows-but-current', 'mode main']
+    alt-shift-h = ['join-with left', 'mode main']
+    alt-shift-j = ['join-with down', 'mode main']
+    alt-shift-k = ['join-with up', 'mode main']
+    alt-shift-l = ['join-with right', 'mode main']
+
+[[on-window-detected]]
+    if.app-id = 'com.github.wez.wezterm'
+    run = 'move-node-to-workspace T'
+[[on-window-detected]]
+    if.app-id = 'com.google.Chrome'
+    run = 'move-node-to-workspace B'
+[[on-window-detected]]
+    if.app-id = 'com.tinyspeck.slackmacgap'
+    run = 'move-node-to-workspace S'
+[[on-window-detected]]
+    if.app-id = 'notion.id'
+    run = 'move-node-to-workspace N'
+[[on-window-detected]]
+    if.app-id = 'com.google.Chrome.app.gdfaincndogidkdcdkhapmbffkckdkhn'
+    run = 'move-node-to-workspace G'

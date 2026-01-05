@@ -73,17 +73,17 @@ sketchybar --add item apple.logo left \
 
 # 2. AeroSpace Workspaces
 sketchybar --add event aerospace_workspace_change
-
 for sid in $(aerospace list-workspaces --all); do
     sketchybar --add item space.$sid left \
-        --subscribe space.$sid aerospace_workspace_change \
-        --set space.$sid \
-        label="$sid" \
-        icon.drawing=off \
-        background.drawing=off \
-        script="$PLUGIN_DIR/aerospace.sh $sid" \
-        click_script="aerospace workspace $sid" \
-        padding_left=4 padding_right=4
+      --subscribe space.$sid aerospace_workspace_change \
+      --set space.$sid \
+      background.color=0x44ffffff \
+      background.corner_radius=5 \
+      background.height=20 \
+      background.drawing=off \
+      label="$sid" \
+      click_script="aerospace workspace $sid" \
+      script="$PLUGIN_DIR/aerospace.sh $sid"
 done
 
 # 3. Separator
@@ -109,14 +109,16 @@ sketchybar --add item front_app left \
 # 1. MeetingBar (Alias)
 # 背景を暗めのメイン色に、文字を白に強制
 sketchybar --add alias "MeetingBar" right \
-           --set "MeetingBar" update_freq=5 \
-           --set "MeetingBar" icon.padding_left=5 \
-           --set "MeetingBar" label.padding_right=5 \
-           --set "MeetingBar" background.color=$BG_MAIN \
-           --set "MeetingBar" background.corner_radius=8 \
-           --set "MeetingBar" background.height=30 \
-           --set "MeetingBar" label.color=$WHITE \
-           --set "MeetingBar" icon.color=$WHITE
+           --set "MeetingBar" \
+           update_freq=5 \
+           icon.padding_left=5 \
+           label.padding_right=5 \
+           background.color=0xff24273a \
+           background.corner_radius=8 \
+           background.height=30 \
+           label.color=0xffffffff \
+           icon.color=0xffffffff \
+           click_script="open -a MeetingBar"
 
 # 2. Wi-Fi
 sketchybar --add item wifi right \

@@ -1,4 +1,5 @@
-{ pkgs
+{ config
+, pkgs
 , ...
 }:
 {
@@ -34,12 +35,10 @@
 
   programs.zsh = {
     enable = true;
-    envExtra = ''
-      export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
-    '';
+    dotDir = "${config.xdg.configHome}/zsh";
+    initContent = builtins.readFile ./zshrc;
   };
 
-  xdg.configFile."zsh/.zshrc".source = ./zshrc;
   xdg.configFile."zsh/rc" = {
     source = ./rc;
     recursive = true;

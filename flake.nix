@@ -3,6 +3,13 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+
+    # AeroSpace の Tap をソースとして定義
+    # aerospace-tap = {
+    #   url = "github:nikitabobko/homebrew-tap";
+    #   flake = false;
+    # };
+
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,7 +20,6 @@
     };
 
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
-    # Optional: Declarative tap management
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
       flake = false;
@@ -32,34 +38,31 @@
     , nix-homebrew
     , homebrew-core
     , homebrew-cask
+      # , aerospace-tap # 引数に追加
+    , ...
     }:
     let
       configuration = { pkgs, ... }: {
-        # List packages installed in system profile. To search by name, run:
-        # $ nix-env -qaP | grep wget
-        environment.systemPackages = [
-        ];
 
-        # Auto upgrade nix package and the daemon service.
-        # services.nix-daemon.enable = true;
-        # nix.package = pkgs.nix;
+        # homebrew = {
+        #   enable = true;
+        #   taps = [
+        #     "nikitabobko/tap"
+        #   ];
+        #   casks = [
+        #     "aerospace"
+        #   ];
+        #   # 自動クリーンアップ有効
+        #   onActivation.cleanup = "zap";
+        # };
 
         nix.enable = false;
-
-        # Necessary for using flakes on this system.
         nix.settings.experimental-features = "nix-command flakes";
 
-        # Create /etc/zshrc that loads the nix-darwin environment.
-        programs.zsh.enable = true; # default shell on catalina
+        programs.zsh.enable = true;
 
-        # Set Git commit hash for darwin-version.
         system.configurationRevision = self.rev or self.dirtyRev or null;
-
-        # Used for backwards compatibility, please read the changelog before changing.
-        # $ darwin-rebuild changelog
         system.stateVersion = 5;
-
-        # The platform the configuration will be used on.
         nixpkgs.hostPlatform = "aarch64-darwin";
         nixpkgs.config = {
           allowUnfree = true;
@@ -72,6 +75,9 @@
           home = "/Users/wasabi";
           shell = pkgs.zsh;
         };
+
+        # 必須設定
+        system.primaryUser = "wasabi";
       };
     in
     let
@@ -87,24 +93,18 @@
 
         {
           nix-homebrew = {
-            # Install Homebrew under the default prefix
             enable = true;
-
-            # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
             enableRosetta = false;
-
-            # User owning the Homebrew prefix
             user = "wasabi";
 
-            # Optional: Declarative tap management
+            # Taps をここで宣言的に紐付けます
             taps = {
               "homebrew/homebrew-core" = homebrew-core;
               "homebrew/homebrew-cask" = homebrew-cask;
+              # "nikitabobko/homebrew-tap" = aerospace-tap;
             };
 
-            # Optional: Enable fully-declarative tap management
-            #
-            # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
+            # 手動変更を禁止し、Nixが生成するリンクのみを使わせます
             mutableTaps = false;
           };
         }
@@ -113,7 +113,6 @@
     {
       darwinConfigurations = {
         Darwin = nix-darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
           modules = modules;
         };
       };
