@@ -45,10 +45,10 @@ set_keymap("v", "<c-o>", "<cmd>silent! w<cr><c-o>")
 set_keymap("v", "<c-s>", "<cmd>silent! w<cr><c-i>")
 
 -- cursor
-set_keymap("n", "<c-f>", "<c-f>zz")
-set_keymap("n", "<c-b>", "<c-b>zz")
-set_keymap("v", "<c-f>", "<c-f>zz")
-set_keymap("v", "<c-b>", "<c-b>zz")
+set_keymap("n", "<c-f>", "<c-f>")
+set_keymap("n", "<c-b>", "<c-b>")
+set_keymap("v", "<c-f>", "<c-f>")
+set_keymap("v", "<c-b>", "<c-b>")
 
 set_keymap("n", "sp", "<cmd>bn<cr>")
 set_keymap("n", "sn", "<cmd>bp<cr>")

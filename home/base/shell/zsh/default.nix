@@ -31,6 +31,10 @@
     xdg-ninja
     yq
     yt-dlp
+    lazydocker
+    miller # Like awk, sed, cut, join, and sort for data formats such as CSV, TSV, JSON, JSON Lines, and positionally-indexed
+    pdftk # Command-line tool for working with PDFs
+    watch
   ];
 
   programs.zsh = {

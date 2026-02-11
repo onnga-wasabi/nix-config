@@ -2,8 +2,7 @@
 , ...
 }: {
   imports = [
-    # ./hammerspoon
-    ./aerospace
+    ./hammerspoon
     ./wezterm
   ];
   home.packages = with pkgs; [

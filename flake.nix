@@ -4,12 +4,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
-    # AeroSpace の Tap をソースとして定義
-    # aerospace-tap = {
-    #   url = "github:nikitabobko/homebrew-tap";
-    #   flake = false;
-    # };
-
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -38,23 +32,10 @@
     , nix-homebrew
     , homebrew-core
     , homebrew-cask
-      # , aerospace-tap # 引数に追加
     , ...
     }:
     let
       configuration = { pkgs, ... }: {
-
-        # homebrew = {
-        #   enable = true;
-        #   taps = [
-        #     "nikitabobko/tap"
-        #   ];
-        #   casks = [
-        #     "aerospace"
-        #   ];
-        #   # 自動クリーンアップ有効
-        #   onActivation.cleanup = "zap";
-        # };
 
         nix.enable = false;
         nix.settings.experimental-features = "nix-command flakes";
@@ -101,7 +82,6 @@
             taps = {
               "homebrew/homebrew-core" = homebrew-core;
               "homebrew/homebrew-cask" = homebrew-cask;
-              # "nikitabobko/homebrew-tap" = aerospace-tap;
             };
 
             # 手動変更を禁止し、Nixが生成するリンクのみを使わせます
