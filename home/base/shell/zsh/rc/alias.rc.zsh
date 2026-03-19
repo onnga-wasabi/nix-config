@@ -27,6 +27,7 @@ alias kn=kubens
 
 alias go=richgo
 alias lg=lazygit
+alias pn=pnpm
 
 # UnAlias
 bindkey -r "^J"
