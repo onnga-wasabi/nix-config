@@ -22,6 +22,11 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+
+    ghx = {
+      url = "github:onnga-wasabi/ghx";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -32,6 +37,7 @@
     , nix-homebrew
     , homebrew-core
     , homebrew-cask
+    , ghx
     , ...
     }:
     let
@@ -45,6 +51,9 @@
         system.configurationRevision = self.rev or self.dirtyRev or null;
         system.stateVersion = 5;
         nixpkgs.hostPlatform = "aarch64-darwin";
+        nixpkgs.overlays = [
+          ghx.overlays.default
+        ];
         nixpkgs.config = {
           allowUnfree = true;
           max-jobs = 4;

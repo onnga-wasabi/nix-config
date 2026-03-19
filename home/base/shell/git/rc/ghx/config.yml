@@ -1,0 +1,28 @@
+defaults:
+  prsLimit: 20
+  issuesLimit: 20
+  view: prs
+  tabs:
+    - prs
+    - actions
+    - issues
+    - notifications
+  smartLayout: true
+  preview:
+    open: true
+    width: 0.45
+  refetchIntervalMinutes: 30
+
+keybindings:
+  universal:
+    - key: "b"
+      name: "lazygit"
+      command: "lazygit"
+
+theme:
+  colors:
+    primary: "#7aa2f7"
+    secondary: "#bb9af7"
+    success: "#9ece6a"
+    warning: "#e0af68"
+    error: "#f7768e"

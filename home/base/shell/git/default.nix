@@ -23,6 +23,7 @@ in
     git
     git-lfs
     gh
+    ghx
     delta
     lazygit
     customPkgs.commitizen
@@ -43,6 +44,10 @@ in
   };
   xdg.configFile."gh-dash" = {
     source = ./rc/gh-dash;
+    recursive = true;
+  };
+  xdg.configFile."ghx" = {
+    source = ./rc/ghx;
     recursive = true;
   };
 }
