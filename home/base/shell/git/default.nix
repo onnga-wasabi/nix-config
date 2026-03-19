@@ -27,7 +27,8 @@ in
     lazygit
     customPkgs.commitizen
   ];
-
+  # gh extensions (gh-dash, gh-enhance) は nixpkgs に揃っていないため
+  # programs.gh.extensions での宣言管理ではなく gh extension install で手動管理する
   xdg.configFile."git" = {
     source = ./rc/git;
     recursive = true;
@@ -38,6 +39,10 @@ in
   };
   xdg.configFile."lazygit" = {
     source = ./rc/lazygit;
+    recursive = true;
+  };
+  xdg.configFile."gh-dash" = {
+    source = ./rc/gh-dash;
     recursive = true;
   };
 }
