@@ -5,6 +5,8 @@
 {
   home.packages = with pkgs; [
     act
+    asciinema
+    asciinema-agg
     bat
     csvq
     devbox

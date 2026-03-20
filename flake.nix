@@ -23,6 +23,11 @@
       flake = false;
     };
 
+    homebrew-tap = {
+      url = "github:onnga-wasabi/homebrew-tap";
+      flake = false;
+    };
+
     ghx = {
       url = "github:onnga-wasabi/ghx";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -37,6 +42,7 @@
     , nix-homebrew
     , homebrew-core
     , homebrew-cask
+    , homebrew-tap
     , ghx
     , ...
     }:
@@ -86,14 +92,19 @@
             enable = true;
             enableRosetta = false;
             user = "wasabi";
+            # 既存の Homebrew（/opt/homebrew 等）が root 所有になっていると
+            # home-manager 経由の `brew` 実行で `permission denied` になりがちです。
+            # 既存インストールを正しい所有者へ自動移行します。
+            autoMigrate = true;
 
             # Taps をここで宣言的に紐付けます
             taps = {
               "homebrew/homebrew-core" = homebrew-core;
               "homebrew/homebrew-cask" = homebrew-cask;
+              "onnga-wasabi/homebrew-tap" = homebrew-tap;
             };
 
-            # 手動変更を禁止し、Nixが生成するリンクのみを使わせます
+            # 手動追加は不可にして、Nix 宣言だけで taps を管理します。
             mutableTaps = false;
           };
         }

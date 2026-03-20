@@ -43,11 +43,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1773940222,
-        "narHash": "sha256-gpUnAN9ihKOH+6mKU5d+TpfEu/0hJIUXveP42lBtlF8=",
+        "lastModified": 1773998236,
+        "narHash": "sha256-oRnuXT3N/ltjOPME0NTQdrG+SEtKAWfyXpWUIFESde0=",
         "owner": "onnga-wasabi",
         "repo": "ghx",
-        "rev": "3250d63aae0df0f903f4a607d6e4ad86a4d367a1",
+        "rev": "7ea0c758758deff561afd025c52df7015f2381c0",
         "type": "github"
       },
       "original": {
@@ -105,6 +105,22 @@
       "original": {
         "owner": "homebrew",
         "repo": "homebrew-core",
+        "type": "github"
+      }
+    },
+    "homebrew-tap": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1774008260,
+        "narHash": "sha256-AelqlpXqm/NzE0gWIWLmJ2JOSq+1V3j+l/DCz8b+6I8=",
+        "owner": "onnga-wasabi",
+        "repo": "homebrew-tap",
+        "rev": "26657edc5df61f77ffaed5872367252ca4008ed5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "onnga-wasabi",
+        "repo": "homebrew-tap",
         "type": "github"
       }
     },
@@ -168,6 +184,7 @@
         "home-manager": "home-manager",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
+        "homebrew-tap": "homebrew-tap",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs"
