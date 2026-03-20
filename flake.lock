@@ -43,8 +43,8 @@
         ]
       },
       "locked": {
-        "lastModified": 1773998236,
-        "narHash": "sha256-oRnuXT3N/ltjOPME0NTQdrG+SEtKAWfyXpWUIFESde0=",
+        "lastModified": 1774007924,
+        "narHash": "sha256-g+bx9y3kPFgUlV3lJvJN6r+FbcP3rx7ojWpcJ2TBLjI=",
         "owner": "onnga-wasabi",
         "repo": "ghx",
         "rev": "62ec1cfd7f2668435fe5b417a554160e3df27e7f",
