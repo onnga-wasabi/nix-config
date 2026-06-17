@@ -1,6 +1,7 @@
 { ...
 }: {
   imports = [
+    ./claude
     ./cspell
     ./latex
     ./nvim

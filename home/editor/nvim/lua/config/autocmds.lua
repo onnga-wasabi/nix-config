@@ -41,6 +41,30 @@ function _G.EBufdelete()
   end
 end
 
+-- snacks dashboard の WinResized バグ対策。
+-- dashboard を開いたまま別ウィンドウを閉じると、内部の WinResized オートコマンドが
+-- 既に無効になったウィンドウ id で nvim_win_get_width を呼んで落ちる
+-- （snacks/dashboard.lua の D:size() に有効性チェックが無い。上流最新でも未修正）。
+-- クラスメソッド D.size をガード版に差し替えて握りつぶす。実行時パッチなので
+-- プラグイン更新でも壊れず、上流が直しても（有効なら orig を呼ぶだけで）無害。
+vim.api.nvim_create_autocmd("User", {
+  pattern = "VeryLazy",
+  callback = function()
+    local ok, dashboard = pcall(require, "snacks.dashboard")
+    if not ok or not dashboard.Dashboard then
+      return
+    end
+    local orig_size = dashboard.Dashboard.size
+    function dashboard.Dashboard.size(self)
+      if not (self.win and vim.api.nvim_win_is_valid(self.win)) then
+        -- 直前のサイズを返せば deep_equal が真になり再描画（=エラー）を回避できる
+        return self._size or { width = 0, height = 0 }
+      end
+      return orig_size(self)
+    end
+  end,
+})
+
 -- im-select を使ってノーマルモード移行時に IME を OFF にする
 local im_select_group = vim.api.nvim_create_augroup("im_select", { clear = true })
 

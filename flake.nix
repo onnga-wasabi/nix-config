@@ -83,6 +83,9 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          # home.file が既存の実ファイル（例: ~/.claude/settings.json）を
+          # 置き換える際、衝突でエラーにせず .hm-bak として退避する。
+          home-manager.backupFileExtension = "hm-bak";
           home-manager.users.wasabi = import ./home;
         }
         nix-homebrew.darwinModules.nix-homebrew

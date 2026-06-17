@@ -7,6 +7,7 @@
     cmake
     # coreutils
     inetutils
+    nixd
     nixpkgs-fmt
     pkg-config
     devbox

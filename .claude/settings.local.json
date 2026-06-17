@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git checkout *)",
+      "Bash(git --no-pager diff -- home/editor/nvim/lua/plugins/coding.lua home/editor/nvim/lua/plugins/disabled.lua home/editor/nvim/lua/config/lazy.lua home/base/shell/tmux/tmux.conf)",
+      "Bash(git --no-pager diff --stat)",
+      "Bash(git --no-pager diff --cached --stat)",
+      "Bash(git --no-pager diff --cached -- home/base/shell/tmux/tmux.conf home/editor/nvim/lua/config/lazy.lua home/editor/nvim/lua/plugins/coding.lua home/editor/nvim/lua/plugins/disabled.lua)",
+      "Bash(ls lua/config/ lua/plugins/ lua/plugins/specs/)",
+      "Bash(cat lua/config/keymaps.lua)",
+      "Bash(grep -in \"C-h\\\\|navigat\\\\|tmux\\\\|terminal\" lua/config/*.lua lua/plugins/*.lua lua/plugins/specs/*.lua)",
+      "Bash(claude --version)",
+      "Read(//Users/wasabi/.local/share/claude/versions/**)"
+    ]
+  }
+}

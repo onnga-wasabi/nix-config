@@ -22,7 +22,7 @@
     jnv
     jq
     navi
-    neofetch
+    fastfetch
     nkf
     ripgrep
     serpl

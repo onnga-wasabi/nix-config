@@ -36,5 +36,7 @@ in
       cargo
       rustfmt
       csvlens
+      # LSP（rustaceanvim が PATH の rust-analyzer を使う）
+      rust-analyzer
     ];
 }

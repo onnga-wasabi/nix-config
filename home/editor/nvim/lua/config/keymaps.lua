@@ -27,6 +27,13 @@ set_keymap("n", "<a-p>", '<cmd>lua vim.notify("Current file: " .. vim.fn.expand(
 set_keymap("n", "<leader>r", "<cmd>source ~/.config/nvim/init.lua<cr>")
 set_keymap("n", '<leader>"', 'gg"+yG')
 -- windows and buffers
+-- LazyVim デフォルトの <C-h/j/k/l> ウィンドウ移動を無効化する。
+-- ウィンドウ移動は <C-w>+hjkl に一本化し、<C-h> 単体は Unix の後退削除（挿入モードの
+-- Backspace）用に解放しておく（日本語入力中の編集で使うため）。
+for _, key in ipairs({ "<C-h>", "<C-j>", "<C-k>", "<C-l>" }) do
+  pcall(vim.keymap.del, "n", key)
+end
+
 set_keymap("n", "<c-w>v", "<c-w>v<c-w>l")
 set_keymap("n", "<c-w>s", "<c-w>s<c-w>j")
 
