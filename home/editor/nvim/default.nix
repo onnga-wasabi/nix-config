@@ -2,6 +2,10 @@
 , ...
 }: {
   programs.neovim.enable = true;
+  # home-manager の default が true→false に変更されたため明示指定して警告を抑止。
+  # 現状の挙動（provider 有効）を維持する。
+  programs.neovim.withRuby = true;
+  programs.neovim.withPython3 = true;
   home.packages = with pkgs; [
     fixjson
     tree-sitter
