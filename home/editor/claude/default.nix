@@ -14,7 +14,14 @@ let
       commit = "";
       pr = "";
     };
+    model = "opus[1m]";
+    editorMode = "normal";
     theme = "auto";
+    # 差分パネル(/diff)はフルスクリーン表示でしか右側に出ない。
+    # このファイルは read-only なので /tui では切り替えられず、ここで固定する。
+    tui = "fullscreen";
+    viewMode = "focus";
+    spinnerTipsEnabled = false;
     skipWorkflowUsageWarning = true;
     statusLine = {
       type = "command";
