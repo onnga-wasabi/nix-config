@@ -23,11 +23,6 @@
       flake = false;
     };
 
-    homebrew-tap = {
-      url = "github:onnga-wasabi/homebrew-tap";
-      flake = false;
-    };
-
     ghx = {
       url = "github:onnga-wasabi/ghx";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -42,7 +37,6 @@
     , nix-homebrew
     , homebrew-core
     , homebrew-cask
-    , homebrew-tap
     , ghx
     , ...
     }:
@@ -53,6 +47,11 @@
         nix.settings.experimental-features = "nix-command flakes";
 
         programs.zsh.enable = true;
+        # /etc/zshrc が `compinit`（-i なし）を実行すると、nix profile が
+        # 別 uid 所有のため compinit の insecure directories プロンプトが出る。
+        # グローバル compinit を無効化し、home-manager 側の
+        # completionInit（compinit -i）に一本化する。
+        programs.zsh.enableGlobalCompInit = false;
 
         system.configurationRevision = self.rev or self.dirtyRev or null;
         system.stateVersion = 5;
@@ -104,13 +103,44 @@
             taps = {
               "homebrew/homebrew-core" = homebrew-core;
               "homebrew/homebrew-cask" = homebrew-cask;
-              "onnga-wasabi/homebrew-tap" = homebrew-tap;
             };
 
             # 手動追加は不可にして、Nix 宣言だけで taps を管理します。
             mutableTaps = false;
           };
         }
+
+        ({ config, ... }: {
+          # brews/casks のパッケージ自体は nix-darwin 標準の homebrew モジュールで
+          # 宣言管理する。nixpkgs にあるものは home.packages を優先し、ここには
+          # nixpkgs で扱いにくい GUI アプリ（cask）等のみを置く方針。
+          homebrew = {
+            enable = true;
+            onActivation = {
+              # 宣言外の brew パッケージは apply 時に掃除する（完全宣言運用）。
+              cleanup = "zap";
+              autoUpdate = false;
+              upgrade = false;
+            };
+            # cleanup="zap" は Brewfile に無い tap も untap しようとする。
+            # tap は nix-homebrew 側で宣言しているので、その一覧を Brewfile へ
+            # 引き継いで untap 対象から除外する（宣言元は nix-homebrew.taps 一箇所）。
+            taps = builtins.attrNames config.nix-homebrew.taps;
+            brews = [ ];
+            casks = [
+              "alt-tab"
+              "bitwarden"
+              "google-chrome"
+              "monitorcontrol"
+              "notion"
+              "raycast"
+              "slack"
+              "zoom"
+              "meetingbar"
+            ];
+            masApps = { };
+          };
+        })
       ];
     in
     {

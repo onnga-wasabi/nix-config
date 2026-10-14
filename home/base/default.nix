@@ -4,6 +4,7 @@
     ./shell
   ];
   home.packages = with pkgs; [
+    actionlint
     cmake
     # coreutils
     inetutils

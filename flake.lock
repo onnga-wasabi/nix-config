@@ -108,22 +108,6 @@
         "type": "github"
       }
     },
-    "homebrew-tap": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1774008260,
-        "narHash": "sha256-AelqlpXqm/NzE0gWIWLmJ2JOSq+1V3j+l/DCz8b+6I8=",
-        "owner": "onnga-wasabi",
-        "repo": "homebrew-tap",
-        "rev": "26657edc5df61f77ffaed5872367252ca4008ed5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "onnga-wasabi",
-        "repo": "homebrew-tap",
-        "type": "github"
-      }
-    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -184,7 +168,6 @@
         "home-manager": "home-manager",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
-        "homebrew-tap": "homebrew-tap",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs"

@@ -1,8 +1,10 @@
 # inspierd by https://oovu70.hatenadiary.org/entry/20120405/p1
 
 # completion enable
-autoload -U compinit
-compinit
+# compinit は home-manager の programs.zsh.completionInit（compinit -i）で
+# 既に実行済み。ここで -i なしに再実行すると insecure directories
+# (/nix/var/nix/profiles/default/share/zsh が chillstackdemo 所有) の
+# 確認プロンプトで補完がロードされず、補完が効かなくなるため呼び出さない。
 
 # basic
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z} r:|[-_.]=**'

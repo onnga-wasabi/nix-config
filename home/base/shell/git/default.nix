@@ -26,6 +26,7 @@ in
     ghx
     delta
     lazygit
+    gitleaks
     customPkgs.commitizen
   ];
   # gh extensions (gh-dash, gh-enhance) は nixpkgs に揃っていないため

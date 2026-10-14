@@ -10,7 +10,20 @@
       "Bash(cat lua/config/keymaps.lua)",
       "Bash(grep -in \"C-h\\\\|navigat\\\\|tmux\\\\|terminal\" lua/config/*.lua lua/plugins/*.lua lua/plugins/specs/*.lua)",
       "Bash(claude --version)",
-      "Read(//Users/wasabi/.local/share/claude/versions/**)"
+      "Read(//Users/wasabi/.local/share/claude/versions/**)",
+      "Bash(nix --extra-experimental-features \"nix-command flakes\" build --max-jobs 4 \".#darwinConfigurations.$\\(uname -s\\).system\")",
+      "Read(//nix/store/**)",
+      "Bash(zsh -ic 'autoload -U compinit; compaudit')",
+      "Bash(echo \"=== exit: $? ===\")",
+      "Bash(autoload -Uz compaudit)",
+      "Bash(compaudit)",
+      "Bash(echo \"---exit:$?---\")",
+      "Bash(brew list *)",
+      "Bash(brew leaves *)",
+      "Bash(mas list *)",
+      "Read(//Users/wasabi/.claude/plugins/**)",
+      "Bash(claude plugin *)",
+      "Bash(rg -rn \"cask\" --no-ignore)"
     ]
   }
 }

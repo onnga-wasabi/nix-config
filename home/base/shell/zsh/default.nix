@@ -33,6 +33,7 @@
     xdg-ninja
     yq
     yt-dlp
+    docker-client # docker CLI + zsh 補完 (_docker)。daemon は別途 Docker Desktop / colima 等
     lazydocker
     miller # Like awk, sed, cut, join, and sort for data formats such as CSV, TSV, JSON, JSON Lines, and positionally-indexed
     pdftk # Command-line tool for working with PDFs
@@ -45,6 +46,7 @@
     enable = true;
     dotDir = "${config.xdg.configHome}/zsh";
     initContent = builtins.readFile ./zshrc;
+    completionInit = "autoload -U compinit && compinit -i";
   };
 
   xdg.configFile."zsh/rc" = {

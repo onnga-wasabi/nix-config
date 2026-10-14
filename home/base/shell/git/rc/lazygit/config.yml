@@ -396,8 +396,8 @@ promptToReturnFromSubprocess: true
 # Keybindings
 keybinding:
   universal:
-    quit: "<c-/>"
-    quit-alt1: ""
+    quit: q
+    quit-alt1: <c-c>
     return: <esc>
     quitWithoutChangingDirectory: Q
     togglePanel: <tab>
@@ -531,7 +531,7 @@ keybinding:
     markCommitAsBaseForRebase: B
     tagCommit: T
     checkoutCommit: <space>
-    resetCherryPick: <c-R>
+    resetCherryPick: <c-r>
     copyCommitAttributeToClipboard: "y"
     openLogMenu: <c-l>
     openInBrowser: o
