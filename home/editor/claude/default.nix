@@ -1,6 +1,21 @@
-{ ...
+{ pkgs
+, ...
 }:
 let
+  # 並列セッションの担当の印（PR 本文 1 行目の「担当:」）を、セッション開始時と push 後に確かめる。
+  claimsHook = pkgs.writeShellApplication {
+    name = "claude-claims-hook";
+    runtimeInputs = with pkgs; [
+      coreutils
+      gawk
+      gh
+      git
+      gnugrep
+      gnused
+      jq
+    ];
+    text = builtins.readFile ./claims-hook.sh;
+  };
   # Claude Code のグローバル設定。
   # バイナリは A 案(ネイティブ版 ~/.local/bin/claude・自動更新)を維持し、
   # ここでは「設定」だけを宣言的に管理する。
@@ -23,6 +38,31 @@ let
     viewMode = "focus";
     spinnerTipsEnabled = false;
     skipWorkflowUsageWarning = true;
+    hooks = {
+      SessionStart = [
+        {
+          hooks = [
+            {
+              type = "command";
+              command = "${claimsHook}/bin/claude-claims-hook session-start";
+              timeout = 30;
+            }
+          ];
+        }
+      ];
+      PostToolUse = [
+        {
+          matcher = "Bash|EnterWorktree";
+          hooks = [
+            {
+              type = "command";
+              command = "${claimsHook}/bin/claude-claims-hook post-tool";
+              timeout = 15;
+            }
+          ];
+        }
+      ];
+    };
     statusLine = {
       type = "command";
       command = "sh /Users/wasabi/.claude/statusline-command.sh";
