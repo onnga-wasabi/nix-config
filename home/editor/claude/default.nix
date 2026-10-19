@@ -16,6 +16,27 @@ let
     ];
     text = builtins.readFile ./claims-hook.sh;
   };
+  # 並列セッションのプロセスを巻き込まないよう、名前の一致でプロセスを止める Bash を拒否する。
+  processGuardHook = pkgs.writeShellApplication {
+    name = "claude-process-guard-hook";
+    runtimeInputs = with pkgs; [
+      gnugrep
+      jq
+    ];
+    text = builtins.readFile ./process-guard-hook.sh;
+  };
+  # Claude を使っていることが PR・issue・コミットメッセージに漏れないよう、GitHub への書き込みを検査する。
+  leakGuardHook = pkgs.writeShellApplication {
+    name = "claude-leak-guard-hook";
+    runtimeInputs = with pkgs; [
+      gawk
+      git
+      gnugrep
+      gnused
+      jq
+    ];
+    text = builtins.readFile ./leak-guard-hook.sh;
+  };
   # Claude Code のグローバル設定。
   # バイナリは A 案(ネイティブ版 ~/.local/bin/claude・自動更新)を維持し、
   # ここでは「設定」だけを宣言的に管理する。
@@ -46,6 +67,23 @@ let
               type = "command";
               command = "${claimsHook}/bin/claude-claims-hook session-start";
               timeout = 30;
+            }
+          ];
+        }
+      ];
+      PreToolUse = [
+        {
+          matcher = "Bash";
+          hooks = [
+            {
+              type = "command";
+              command = "${processGuardHook}/bin/claude-process-guard-hook";
+              timeout = 5;
+            }
+            {
+              type = "command";
+              command = "${leakGuardHook}/bin/claude-leak-guard-hook";
+              timeout = 10;
             }
           ];
         }
