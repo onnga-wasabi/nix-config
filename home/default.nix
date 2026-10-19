@@ -5,6 +5,7 @@
     ./lang
 
     ./direnv.nix
+    ./nix.nix
   ];
 
   home.username = "wasabi";
