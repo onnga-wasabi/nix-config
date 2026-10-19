@@ -4,7 +4,9 @@ tasks:
   stage:
     desc: 'stage'
     cmds:
-      - git add .
+      # flake は git が追跡していないファイルを見ないので、新規ファイルを追跡対象に入れる。
+      # -N（intent-to-add）なので中身はステージに乗らず、コミットされる内容は変わらない。
+      - git add -N .
     silent: false
   format:
     desc: 'format'
@@ -14,13 +16,13 @@ tasks:
     silent: false
   build:
     desc: 'build'
-    deps:
-      - stage
-      - format
     vars:
       PLATFORM:
         sh: uname -s
     cmds:
+      # deps だと並列に走るので、format → stage → build の順に呼ぶ
+      - task: format
+      - task: stage
       - nix --extra-experimental-features "nix-command flakes" build --max-jobs 4 ".#darwinConfigurations.{{.PLATFORM}}.system"
     silent: false
   apply:
