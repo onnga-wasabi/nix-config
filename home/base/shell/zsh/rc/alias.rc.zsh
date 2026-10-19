@@ -14,7 +14,13 @@ alias lla="ll --all"
 alias rm="rm -i"
 
 # misc
-alias loadenv="(){set -a; source $1; set +a;}"
+# .env などを読み込んで中の変数を export する
+# （alias だと "$1" が定義時に空文字へ展開されてしまうので関数にする）
+loadenv() {
+  set -a
+  source "$1"
+  set +a
+}
 alias ..="cd .."
 alias ...="cd ../.."
 alias nd-init='echo "use nix" >> .envrc && direnv allow'
