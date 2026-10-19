@@ -18,6 +18,3 @@ source "${ZSH_CONFIG_HOME}/tpm.rc.zsh"
 # Functions
 source "${ZSH_FUNCTIONS_HOME}/init.zsh"
 
-# Language Specific
-source "${ZSH_CONFIG_HOME}/language-specific/init.rc.zsh"
-
