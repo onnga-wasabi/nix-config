@@ -58,6 +58,10 @@
     recursive = true;
   };
 
+  # sqlite.lua（nvim）が読む libsqlite3 の場所
+  # https://github.com/kkharji/sqlite.lua/blob/d0ffd703b56d090d213b497ed4eb840495f14a11/lua/sqlite/defs.lua#L18
+  home.sessionVariables.LIBSQLITE = "${pkgs.sqlite.out}/lib/libsqlite3.dylib";
+
   # 本体は xdg 配下に置けない
   home.file.".p10k.zsh".source = ./rc/p10k.zsh;
 }
