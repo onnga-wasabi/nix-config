@@ -43,8 +43,11 @@
     let
       configuration = { pkgs, ... }: {
 
+        # nix 本体（daemon・/etc/nix/nix.conf）は nix-darwin では管理しない。
+        # この状態では nix.settings は nix.conf に書き出されず黙って無視されるため、
+        # experimental-features などは home-manager 側（home/nix.nix）で
+        # ~/.config/nix/nix.conf に書く。
         nix.enable = false;
-        nix.settings.experimental-features = "nix-command flakes";
 
         programs.zsh.enable = true;
         # /etc/zshrc が `compinit`（-i なし）を実行すると、nix profile が
@@ -61,8 +64,6 @@
         ];
         nixpkgs.config = {
           allowUnfree = true;
-          max-jobs = 4;
-          binary-caches-parallel-connections = 4;
         };
 
         users.users.wasabi = {
