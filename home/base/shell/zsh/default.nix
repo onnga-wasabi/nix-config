@@ -47,6 +47,16 @@
     dotDir = "${config.xdg.configHome}/zsh";
     initContent = builtins.readFile ./zshrc;
     completionInit = "autoload -U compinit && compinit -i";
+    # プラグインは zinit で起動時に clone せず nixpkgs から供給する
+    plugins = [
+      {
+        name = "powerlevel10k";
+        src = pkgs.zsh-powerlevel10k;
+        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+      }
+    ];
+    # zshrc の最後で読み込む必要があるので home-manager に任せる
+    syntaxHighlighting.enable = true;
   };
 
   xdg.configFile."zsh/rc" = {
