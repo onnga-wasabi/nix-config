@@ -7,13 +7,9 @@ source "${ZSH_CONFIG_HOME}/alias.rc.zsh"
 source "${ZSH_CONFIG_HOME}/color.rc.zsh"
 source "${ZSH_CONFIG_HOME}/completions/init.rc.zsh"
 
-# Plugin Manger
-source "${ZSH_CONFIG_HOME}/zinit.rc.zsh"
-
 # tools
 source "${ZSH_CONFIG_HOME}/fzf.rc.zsh"
 source "${ZSH_CONFIG_HOME}/p10k.rc.zsh"
-source "${ZSH_CONFIG_HOME}/tpm.rc.zsh"
 
 # Functions
 source "${ZSH_FUNCTIONS_HOME}/init.zsh"

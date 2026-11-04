@@ -11,8 +11,9 @@ tasks:
   format:
     desc: 'format'
     cmds:
-      - nix --extra-experimental-features "nix-command flakes" shell nixpkgs#nixpkgs-fmt -c nixpkgs-fmt  .
-      - nix --extra-experimental-features "nix-command flakes" shell nixpkgs#stylua -c stylua  .
+      # --inputs-from . で nixpkgs をレジストリではなく flake.lock の版に解決させる
+      - nix --extra-experimental-features "nix-command flakes" shell --inputs-from . nixpkgs#nixpkgs-fmt -c nixpkgs-fmt  .
+      - nix --extra-experimental-features "nix-command flakes" shell --inputs-from . nixpkgs#stylua -c stylua  .
     silent: false
   build:
     desc: 'build'
