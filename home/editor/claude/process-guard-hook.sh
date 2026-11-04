@@ -12,11 +12,14 @@ pgrep_to_kill='pgrep[^;&]*\|[[:space:]]*xargs[[:space:]]+(-[^[:space:]]+[[:space
 kill_of_pgrep='kill[^;&|]*\$\([[:space:]]*pgrep'
 
 if grep -Eq -e "$by_name" -e "$pgrep_to_kill" -e "$kill_of_pgrep" <<<"$command"; then
-  cat >&2 <<'EOF'
-名前の一致でプロセスを止めるコマンドは使えません（pkill・killall・pgrep から kill）。
+  reason="名前の一致でプロセスを止めるコマンドは使えません（pkill・killall・pgrep から kill）。
 ほかのセッションの signoff・API・画面を巻き込みます。
-自分で起動したバックグラウンドのタスクは TaskStop で、自分で控えた PID は kill <PID> で止めてください。
-EOF
+自分で起動したバックグラウンドのタスクは TaskStop で、自分で控えた PID は kill <PID> で止めてください。"
+  # Cursor（入力に cursor_version が付く）は拒否の理由を stdout の JSON から読む。
+  if [ -n "$(jq -r '.cursor_version // empty' <<<"$input")" ]; then
+    jq -n --arg m "$reason" '{permission: "deny", user_message: $m, agent_message: $m}'
+  fi
+  echo "$reason" >&2
   exit 2
 fi
 exit 0

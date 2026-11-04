@@ -5,7 +5,7 @@
 set +o errexit +o pipefail
 input="$(cat)"
 command="$(jq -r '.tool_input.command // empty' <<<"$input")"
-cwd="$(jq -r '.cwd // empty' <<<"$input")"
+cwd="$(jq -r '.cwd // .workspace_roots[0] // empty' <<<"$input")"
 [ -n "$command" ] || exit 0
 
 leak='claude|anthropic|co-authored-by|🤖'
@@ -15,11 +15,14 @@ git_commit='git([[:space:]]+-C[[:space:]]+[^[:space:]]+)?[[:space:]]+(commit|tag
 git_push='git([[:space:]]+-C[[:space:]]+[^[:space:]]+)?[[:space:]]+push'
 
 deny() {
-  cat >&2 <<EOF
-GitHub に Claude を使っていることが漏れる書き込みは使えません（$1）。
+  reason="GitHub に Claude を使っていることが漏れる書き込みは使えません（$1）。
 claude・anthropic・Co-Authored-By・🤖・claude.ai のリンク（セッション・artifact）を本文・コメント・コミットメッセージから外してください。
-図や設計は本文に書き下し、ユーザーへ渡すリンクはチャットで渡します。
-EOF
+図や設計は本文に書き下し、ユーザーへ渡すリンクはチャットで渡します。"
+  # Cursor（入力に cursor_version が付く）は拒否の理由を stdout の JSON から読む。
+  if [ -n "$(jq -r '.cursor_version // empty' <<<"$input")" ]; then
+    jq -n --arg m "$reason" '{permission: "deny", user_message: $m, agent_message: $m}'
+  fi
+  echo "$reason" >&2
   exit 2
 }
 

@@ -1,21 +1,40 @@
 # 並列で動く Claude セッションが同じ作業を取り合わないための Claude Code フック。
-# 持ち主は GitHub の PR で示す（着手したらすぐ下書き PR・本文の 1 行目に「担当: <セッション名>」）。
+# Cursor も ~/.claude/settings.json のフックを読み込んで走らせる（入力に cursor_version が付く）。
+# 持ち主は、着手時は他セッションへの連絡で、PR を出してからは本文の 1 行目「担当: <セッション名>」で示す。
+# 空コミットの下書き PR は出さない（push のたびに Actions の CI が走り、課金がかさむ）。
 #
 #   session-start : 開いている PR の担当と、PR を持たない worktree を文脈に出す
-#   post-tool     : worktree を作った直後・push した直後に、そのブランチに PR が無ければ促す
+#   post-tool     : worktree を作った直後は着手の連絡を、push した直後にそのブランチの PR が無ければ PR を促す
 #
 # gh が使えない・GitHub の repo でないときは何も出さずに終わる（フックで作業を止めない）。
 
 mode="${1:-}"
 input="$(cat)"
-cwd="$(jq -r '.cwd // empty' <<<"$input")"
+cursor="$(jq -r '.cursor_version // empty' <<<"$input")"
+cwd="$(jq -r '.cwd // .workspace_roots[0] // empty' <<<"$input")"
 [ -n "$cwd" ] && cd "$cwd" 2>/dev/null || true
 
 git rev-parse --is-inside-work-tree >/dev/null 2>&1 || exit 0
 
+# Cursor は入れ子の hookSpecificOutput を読まず、ListAgents・SendMessage も無い。
+if [ -n "$cursor" ]; then
+  session_id="$(jq -r '.session_id // .conversation_id // empty' <<<"$input")"
+  claim_line="「担当: cursor-${session_id:0:8}」"
+  announce="着手したら、何に取りかかるかをユーザーに伝える。"
+  ask_owner="引き継ぎメモの作業に手を付ける前は、持ち主をユーザーに聞く。"
+else
+  claim_line="「担当: <ListAgents で見える自分のセッション名>」"
+  announce="着手したら、ListAgents で見える他のセッション全員に SendMessage で何に取りかかるかを伝える。"
+  ask_owner="引き継ぎメモの作業に手を付ける前は ListAgents で他セッションを見て SendMessage で持ち主を聞く。"
+fi
+
 emit() {
-  jq -n --arg event "$1" --arg ctx "$2" \
-    '{hookSpecificOutput: {hookEventName: $event, additionalContext: $ctx}}'
+  if [ -n "$cursor" ]; then
+    jq -n --arg ctx "$2" '{additional_context: $ctx}'
+  else
+    jq -n --arg event "$1" --arg ctx "$2" \
+      '{hookSpecificOutput: {hookEventName: $event, additionalContext: $ctx}}'
+  fi
 }
 
 open_prs() {
@@ -49,7 +68,7 @@ session-start)
       fi
     done)"
 
-  ctx="並列作業の決まり: 着手したらすぐ下書き PR を出し、本文の 1 行目に「担当: <ListAgents で見える自分のセッション名>」と書く。担当行のある PR は担当以外が触らない。引き継ぎメモの作業に手を付ける前は ListAgents で他セッションを見て SendMessage で持ち主を聞く。
+  ctx="並列作業の決まり: ${announce}空コミットの下書き PR は出さない（push のたびに CI が走る）。PR は手元で形になってから出し、本文の 1 行目に${claim_line}と書く。担当行のある PR と、他のセッションが着手を伝えた作業は、担当以外が触らない。${ask_owner}
 
 担当のある PR:
 ${claimed:-（なし）}
@@ -64,9 +83,14 @@ ${orphan_worktrees:-（なし）}"
 
 post-tool)
   tool="$(jq -r '.tool_name // empty' <<<"$input")"
-  if [ "$tool" = "Bash" ]; then
+  if [ "$tool" = "Bash" ] || [ "$tool" = "Shell" ]; then
     jq -r '.tool_input.command // empty' <<<"$input" | grep -qE '(^|[;&|[:space:]])git( -C [^ ]+)? push' || exit 0
   elif [ "$tool" != "EnterWorktree" ]; then
+    exit 0
+  fi
+
+  if [ "$tool" = "EnterWorktree" ]; then
+    emit PostToolUse "並列作業の決まり: ${announce}PR はまだ出さない。手元で形になってから 1 回 push して出し、本文の 1 行目に${claim_line}と書く。"
     exit 0
   fi
 
@@ -78,6 +102,6 @@ post-tool)
   count="$(timeout 10 gh pr list --state open --head "$branch" --json number --jq 'length' 2>/dev/null)" || exit 0
   [ "$count" = "0" ] || exit 0
 
-  emit PostToolUse "ブランチ ${branch} にはまだ PR がありません。並列作業の決まりに従い、いま下書き PR（gh pr create --draft）を出し、本文の 1 行目に「担当: <ListAgents で見える自分のセッション名>」と書いてください。コミットがまだ無ければ git commit --allow-empty で足りる。"
+  emit PostToolUse "ブランチ ${branch} にはまだ PR がありません。PR（gh pr create）を出し、本文の 1 行目に${claim_line}と書いてください。"
   ;;
 esac
