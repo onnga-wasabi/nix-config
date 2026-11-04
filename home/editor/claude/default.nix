@@ -128,4 +128,6 @@ in
   home.file.".claude/settings.json".text = builtins.toJSON settings;
   home.file.".claude/CLAUDE.md".source = ./CLAUDE.md;
   home.file.".claude/statusline-command.sh".source = ./statusline-command.sh;
+  # 点検役。作った側の結論を見せずに点検させ、Edit・Write を持たせないことで書き換えを止める。
+  home.file.".claude/agents/reviewer.md".source = ./agents/reviewer.md;
 }
