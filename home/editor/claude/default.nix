@@ -104,6 +104,8 @@ let
     statusLine = {
       type = "command";
       command = "sh /Users/wasabi/.claude/statusline-command.sh";
+      # ほかのセッションの作業中・待機は、自分が止まっている間も変わるので時間でも取り直す
+      refreshInterval = 15;
     };
     # プラグインの「有効化フラグ」だけを宣言的に管理する（user スコープ）。
     # 注意: これは enable フラグにすぎず、本体は自動ダウンロードされない。
@@ -128,6 +130,7 @@ in
   home.file.".claude/settings.json".text = builtins.toJSON settings;
   home.file.".claude/CLAUDE.md".source = ./CLAUDE.md;
   home.file.".claude/statusline-command.sh".source = ./statusline-command.sh;
+  home.file.".claude/statusline-summarize.sh".source = ./statusline-summarize.sh;
   # 点検役。作った側の結論を見せずに点検させ、Edit・Write を持たせないことで書き換えを止める。
   home.file.".claude/agents/reviewer.md".source = ./agents/reviewer.md;
 }
